@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dv_flow.libfusesoc.edam_builder &mdash; dv-flow-libfusesoc 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            dv-flow-libfusesoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#required-knowledge">Required Knowledge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#install-simulation-tools">Install Simulation Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started.html#quick-start-tutorial">Quick Start Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#step-1-set-up-fusesoc-workspace">Step 1: Set Up FuseSoC Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#step-2-create-a-simple-core">Step 2: Create a Simple Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#step-3-run-your-first-simulation">Step 3: Run Your First Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started.html#common-issues">Common Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#core-not-found">Core Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#build-failures">Build Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../getting_started.html#tool-not-found">Tool Not Found</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../getting_started.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage_examples.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage_examples.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-1-simple-core-resolution">Example 1: Simple Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-2-icarus-verilog-simulation">Example 2: Icarus Verilog Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-3-verilator-simulation">Example 3: Verilator Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage_examples.html#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-4-using-multiple-libraries">Example 4: Using Multiple Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-5-parameterized-simulation">Example 5: Parameterized Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-6-error-handling">Example 6: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage_examples.html#integration-examples">Integration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-7-integration-with-dv-flow">Example 7: Integration with DV Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-8-custom-task-integration">Example 8: Custom Task Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage_examples.html#real-world-examples">Real-World Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-9-uart-simulation">Example 9: UART Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#example-10-soc-subsystem-simulation">Example 10: SoC Subsystem Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../usage_examples.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#performance-optimization">Performance Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#debugging-tips">Debugging Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../usage_examples.html#workspace-management">Workspace Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tasks.html#fusesoc-package">fusesoc Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#coreresolve-task">CoreResolve Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#corefetch-task">CoreFetch Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#complete-simulation-flow-example">Complete Simulation Flow Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../tasks.html#task-development-guide">Task Development Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#creating-custom-tasks">Creating Custom Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick_reference.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#common-commands">Common Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#core-resolution">Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#simulation-flow">Simulation Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#parameter-reference">Parameter Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#coreresolve-parameters">CoreResolve Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#simconfigure-parameters">SimConfigure Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#supported-tools">Supported Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#simulators">Simulators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#tool-specific-options">Tool-Specific Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#icarus-verilog">Icarus Verilog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#verilator">Verilator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#modelsim-questa">ModelSim/Questa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#vcs">VCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#common-patterns">Common Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#pattern-multiple-test-cases">Pattern: Multiple Test Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#pattern-parameterized-configurations">Pattern: Parameterized Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#pattern-error-handling">Pattern: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#file-type-mappings">File Type Mappings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#fusesoc-to-dv-flow">FuseSoC to DV Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#fusesoc-variables">FuseSoC Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#common-errors">Common Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#debug-commands">Debug Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quick_reference.html#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quick_reference.html#external-links">External Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_manager()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.add_library()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_core()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter"><code class="docutils literal notranslate"><span class="pre">FilesetConverter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.FILE_TYPE_MAP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.convert_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.extract_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.filter_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.get_source_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#conversion-features">Conversion Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#file-type-mapping">File Type Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.libraries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.workspace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.last_resolution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve"><code class="docutils literal notranslate"><span class="pre">CoreResolve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#task-parameters">Task Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#task-outputs">Task Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder"><code class="docutils literal notranslate"><span class="pre">EdamBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_toplevel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_plusargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_tool_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_flow_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.build"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.build_edam_from_core"><code class="docutils literal notranslate"><span class="pre">build_edam_from_core()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#edam-structure">EDAM Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#builder-pattern">Builder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#convenience-functions">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.configure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_work_root()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_log_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.cleanup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_sim_backend"><code class="docutils literal notranslate"><span class="pre">create_sim_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_fpga_backend"><code class="docutils literal notranslate"><span class="pre">create_fpga_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#backend-lifecycle">Backend Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#error-handling">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#id1">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.toplevel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool_options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.configured</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams"><code class="docutils literal notranslate"><span class="pre">SimBuildParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.build_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.executable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams"><code class="docutils literal notranslate"><span class="pre">SimRunParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.tool"><code class="docutils literal notranslate"><span class="pre">SimRunParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs"><code class="docutils literal notranslate"><span class="pre">SimRunParams.runtime_plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput"><code class="docutils literal notranslate"><span class="pre">SimRunOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.run_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.log_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigure"><code class="docutils literal notranslate"><span class="pre">SimConfigure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuild"><code class="docutils literal notranslate"><span class="pre">SimBuild()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRun"><code class="docutils literal notranslate"><span class="pre">SimRun()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html#task-chaining">Task Chaining</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../modules.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../modules.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tasks.html#fusesoc-package">fusesoc Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../tasks.html#task-development-guide">Task Development Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#version-0-0-1-2026-02-03">Version 0.0.1 (2026-02-03)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../changelog.html#initial-release">Initial Release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#breaking-changes">Breaking Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#future-plans">Future Plans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../changelog.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../changelog.html#version-0-0-0-development">Version 0.0.0 (Development)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dv-flow-libfusesoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dv_flow.libfusesoc.edam_builder</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dv_flow.libfusesoc.edam_builder</h1><div class="highlight"><pre>
+<span></span><span class="c1">#****************************************************************************</span>
+<span class="c1">#* edam_builder.py</span>
+<span class="c1">#*</span>
+<span class="c1">#* Copyright 2023-2025 Matthew Ballance and Contributors</span>
+<span class="c1">#*</span>
+<span class="c1">#* Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may </span>
+<span class="c1">#* not use this file except in compliance with the License.  </span>
+<span class="c1">#* You may obtain a copy of the License at:</span>
+<span class="c1">#*  </span>
+<span class="c1">#*   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#*  </span>
+<span class="c1">#* Unless required by applicable law or agreed to in writing, software </span>
+<span class="c1">#* distributed under the License is distributed on an &quot;AS IS&quot; BASIS, </span>
+<span class="c1">#* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  </span>
+<span class="c1">#* See the License for the specific language governing permissions and </span>
+<span class="c1">#* limitations under the License.</span>
+<span class="c1">#*</span>
+<span class="c1">#****************************************************************************</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Any</span>
+
+
+<div class="viewcode-block" id="EdamBuilder">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder">[docs]</a>
+<span class="k">class</span> <span class="nc">EdamBuilder</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Builds EDAM (EDA Metadata) structures for Edalize.</span>
+<span class="sd">    </span>
+<span class="sd">    EDAM is the data structure that Edalize uses to describe all inputs</span>
+<span class="sd">    needed for EDA tool operations (simulation, synthesis, etc.).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+<div class="viewcode-block" id="EdamBuilder.__init__">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize EDAM builder.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            name: Project/design name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edam</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;tool_options&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;flow_options&#39;</span><span class="p">:</span> <span class="p">{},</span>
+            <span class="s1">&#39;toplevel&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="p">}</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.add_files">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_files</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add files to EDAM.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            files: List of file dictionaries with &#39;name&#39; and &#39;file_type&#39;</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">file_info</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="n">edam_file</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="n">file_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">))),</span>
+                <span class="s1">&#39;file_type&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_map_file_type</span><span class="p">(</span><span class="n">file_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">)),</span>
+            <span class="p">}</span>
+            
+            <span class="c1"># Add optional attributes</span>
+            <span class="k">if</span> <span class="n">file_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;is_include&#39;</span><span class="p">):</span>
+                <span class="n">edam_file</span><span class="p">[</span><span class="s1">&#39;is_include_file&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+                
+            <span class="k">if</span> <span class="n">file_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;include_path&#39;</span><span class="p">):</span>
+                <span class="n">edam_file</span><span class="p">[</span><span class="s1">&#39;include_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">file_info</span><span class="p">[</span><span class="s1">&#39;include_path&#39;</span><span class="p">])</span>
+                
+            <span class="k">if</span> <span class="n">file_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;library&#39;</span><span class="p">):</span>
+                <span class="n">edam_file</span><span class="p">[</span><span class="s1">&#39;logical_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">file_info</span><span class="p">[</span><span class="s1">&#39;library&#39;</span><span class="p">]</span>
+                
+            <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">edam_file</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.set_toplevel">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_toplevel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">toplevel</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set toplevel module(s).</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            toplevel: Toplevel module name (string for Edalize compatibility)</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Edalize expects a string, not a list</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">toplevel</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;toplevel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">toplevel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">if</span> <span class="n">toplevel</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;toplevel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">toplevel</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.add_parameters">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add parameters (Verilog defines, VHDL generics, plusargs).</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            parameters: Dictionary of parameter names to values</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="c1"># Already in EDAM format with datatype, paramtype</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Simple value, infer type</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;datatype&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_infer_datatype</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+                    <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span>
+                    <span class="s1">&#39;paramtype&#39;</span><span class="p">:</span> <span class="s1">&#39;vlogparam&#39;</span><span class="p">,</span>  <span class="c1"># Default to Verilog parameter</span>
+                <span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.add_plusargs">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_plusargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plusargs</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add runtime plusargs.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            plusargs: Dictionary of plusarg names to values</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">plusargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;datatype&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_infer_datatype</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+                <span class="s1">&#39;default&#39;</span><span class="p">:</span> <span class="n">value</span><span class="p">,</span>
+                <span class="s1">&#39;paramtype&#39;</span><span class="p">:</span> <span class="s1">&#39;plusarg&#39;</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.set_tool_options">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_tool_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tool</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set tool-specific options.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            tool: Tool name (e.g., &#39;icarus&#39;, &#39;verilator&#39;)</span>
+<span class="sd">            options: Dictionary of tool options</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">tool</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.set_flow_options">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options">[docs]</a>
+    <span class="k">def</span> <span class="nf">set_flow_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set flow-level options.</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            options: Dictionary of flow options (e.g., {&#39;tool&#39;: &#39;icarus&#39;, &#39;target&#39;: &#39;sim&#39;})</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;flow_options&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.add_include_dirs">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_include_dirs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">include_dirs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s1">&#39;EdamBuilder&#39;</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add include directories (convenience method).</span>
+<span class="sd">        </span>
+<span class="sd">        Args:</span>
+<span class="sd">            include_dirs: List of include directory paths</span>
+<span class="sd">            </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Self for chaining</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Edalize handles include dirs via tool options</span>
+        <span class="c1"># For Icarus and Verilator, we need to add them to appropriate tool options</span>
+        <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;icarus&#39;</span><span class="p">,</span> <span class="s1">&#39;verilator&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">tool</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                
+            <span class="k">if</span> <span class="n">tool</span> <span class="o">==</span> <span class="s1">&#39;icarus&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;iverilog_options&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">][</span><span class="s1">&#39;iverilog_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">inc_dir</span> <span class="ow">in</span> <span class="n">include_dirs</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">][</span><span class="s1">&#39;iverilog_options&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;-I&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">inc_dir</span><span class="p">)])</span>
+                    
+            <span class="k">elif</span> <span class="n">tool</span> <span class="o">==</span> <span class="s1">&#39;verilator&#39;</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s1">&#39;verilator_options&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">]:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">][</span><span class="s1">&#39;verilator_options&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">inc_dir</span> <span class="ow">in</span> <span class="n">include_dirs</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="p">[</span><span class="s1">&#39;tool_options&#39;</span><span class="p">][</span><span class="n">tool</span><span class="p">][</span><span class="s1">&#39;verilator_options&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;-I</span><span class="si">{</span><span class="n">inc_dir</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                    
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+        
+<div class="viewcode-block" id="EdamBuilder.build">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.build">[docs]</a>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Build and return the EDAM structure.</span>
+<span class="sd">        </span>
+<span class="sd">        Returns:</span>
+<span class="sd">            Complete EDAM dictionary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Validate required fields</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">edam</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;EDAM &#39;name&#39; is required&quot;</span><span class="p">)</span>
+            
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">edam</span></div>
+
+        
+    <span class="k">def</span> <span class="nf">_map_file_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dv_flow_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Map DV Flow file type to EDAM file type.&quot;&quot;&quot;</span>
+        <span class="n">type_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;verilog&#39;</span><span class="p">:</span> <span class="s1">&#39;verilogSource&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;systemverilog&#39;</span><span class="p">:</span> <span class="s1">&#39;systemVerilogSource&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;vhdl&#39;</span><span class="p">:</span> <span class="s1">&#39;vhdlSource&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;vhdl-2008&#39;</span><span class="p">:</span> <span class="s1">&#39;vhdlSource-2008&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;constraint&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>  <span class="c1"># Will need more specific mapping based on tool</span>
+            <span class="s1">&#39;xdc&#39;</span><span class="p">:</span> <span class="s1">&#39;xdc&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;sdc&#39;</span><span class="p">:</span> <span class="s1">&#39;SDC&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;ucf&#39;</span><span class="p">:</span> <span class="s1">&#39;UCF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;tcl&#39;</span><span class="p">:</span> <span class="s1">&#39;tclSource&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;user&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">type_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dv_flow_type</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">_infer_datatype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Infer EDAM datatype from Python value.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s1">&#39;bool&#39;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s1">&#39;int&#39;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s1">&#39;real&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;str&#39;</span></div>
+
+
+
+<div class="viewcode-block" id="build_edam_from_core">
+<a class="viewcode-back" href="../../../edalize_integration.html#dv_flow.libfusesoc.edam_builder.build_edam_from_core">[docs]</a>
+<span class="k">def</span> <span class="nf">build_edam_from_core</span><span class="p">(</span><span class="n">core_files</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">toplevel</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+                         <span class="n">tool</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;icarus&#39;</span><span class="p">,</span> 
+                         <span class="n">parameters</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                         <span class="n">plusargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convenience function to build EDAM from FuseSoC core files.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        core_files: Dictionary from FuseSoCManager.get_core_files()</span>
+<span class="sd">        toplevel: Toplevel module name</span>
+<span class="sd">        tool: Target tool (default: &#39;icarus&#39;)</span>
+<span class="sd">        parameters: Optional build-time parameters</span>
+<span class="sd">        plusargs: Optional runtime plusargs</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Complete EDAM dictionary</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span> <span class="nn">.fusesoc_fileset</span> <span class="kn">import</span> <span class="n">FilesetConverter</span>
+    
+    <span class="c1"># Convert files</span>
+    <span class="n">converter</span> <span class="o">=</span> <span class="n">FilesetConverter</span><span class="p">(</span>
+        <span class="n">core_root</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="n">core_files</span><span class="p">[</span><span class="s1">&#39;core_root&#39;</span><span class="p">]),</span>
+        <span class="n">files_root</span><span class="o">=</span><span class="n">Path</span><span class="p">(</span><span class="n">core_files</span><span class="p">[</span><span class="s1">&#39;files_root&#39;</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="n">converted_files</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">convert_files</span><span class="p">(</span><span class="n">core_files</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">])</span>
+    <span class="n">include_dirs</span> <span class="o">=</span> <span class="n">converter</span><span class="o">.</span><span class="n">extract_include_dirs</span><span class="p">(</span><span class="n">core_files</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">])</span>
+    
+    <span class="c1"># Build EDAM</span>
+    <span class="n">builder</span> <span class="o">=</span> <span class="n">EdamBuilder</span><span class="p">(</span><span class="n">core_files</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">add_files</span><span class="p">(</span><span class="n">converted_files</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">set_toplevel</span><span class="p">(</span><span class="n">toplevel</span><span class="p">)</span>
+    <span class="n">builder</span><span class="o">.</span><span class="n">set_flow_options</span><span class="p">({</span><span class="s1">&#39;tool&#39;</span><span class="p">:</span> <span class="n">tool</span><span class="p">})</span>
+    
+    <span class="k">if</span> <span class="n">include_dirs</span><span class="p">:</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">add_include_dirs</span><span class="p">(</span><span class="n">include_dirs</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">parameters</span><span class="p">:</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">add_parameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">plusargs</span><span class="p">:</span>
+        <span class="n">builder</span><span class="o">.</span><span class="n">add_plusargs</span><span class="p">(</span><span class="n">plusargs</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Ballance.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

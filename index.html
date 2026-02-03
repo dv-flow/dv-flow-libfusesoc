@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dv-flow-libfusesoc Documentation &mdash; dv-flow-libfusesoc 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            dv-flow-libfusesoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#required-knowledge">Required Knowledge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-simulation-tools">Install Simulation Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start-tutorial">Quick Start Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-1-set-up-fusesoc-workspace">Step 1: Set Up FuseSoC Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-2-create-a-simple-core">Step 2: Create a Simple Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-3-run-your-first-simulation">Step 3: Run Your First Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#common-issues">Common Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#core-not-found">Core Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#build-failures">Build Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#tool-not-found">Tool Not Found</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage_examples.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-1-simple-core-resolution">Example 1: Simple Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-2-icarus-verilog-simulation">Example 2: Icarus Verilog Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-3-verilator-simulation">Example 3: Verilator Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-4-using-multiple-libraries">Example 4: Using Multiple Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-5-parameterized-simulation">Example 5: Parameterized Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-6-error-handling">Example 6: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#integration-examples">Integration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-7-integration-with-dv-flow">Example 7: Integration with DV Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-8-custom-task-integration">Example 8: Custom Task Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#real-world-examples">Real-World Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-9-uart-simulation">Example 9: UART Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-10-soc-subsystem-simulation">Example 10: SoC Subsystem Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#performance-optimization">Performance Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#debugging-tips">Debugging Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#workspace-management">Workspace Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#coreresolve-task">CoreResolve Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#corefetch-task">CoreFetch Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#complete-simulation-flow-example">Complete Simulation Flow Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#creating-custom-tasks">Creating Custom Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick_reference.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-commands">Common Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#core-resolution">Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulation-flow">Simulation Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#parameter-reference">Parameter Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#coreresolve-parameters">CoreResolve Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simconfigure-parameters">SimConfigure Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#supported-tools">Supported Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulators">Simulators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#tool-specific-options">Tool-Specific Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#icarus-verilog">Icarus Verilog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#verilator">Verilator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#modelsim-questa">ModelSim/Questa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#vcs">VCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-patterns">Common Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-multiple-test-cases">Pattern: Multiple Test Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-parameterized-configurations">Pattern: Parameterized Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-error-handling">Pattern: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#file-type-mappings">File Type Mappings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-to-dv-flow">FuseSoC to DV Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-variables">FuseSoC Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#common-errors">Common Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#debug-commands">Debug Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#external-links">External Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_manager()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.add_library()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_core()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter"><code class="docutils literal notranslate"><span class="pre">FilesetConverter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.FILE_TYPE_MAP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.convert_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.extract_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.filter_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.get_source_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#conversion-features">Conversion Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#file-type-mapping">File Type Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.libraries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.workspace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.last_resolution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve"><code class="docutils literal notranslate"><span class="pre">CoreResolve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#task-parameters">Task Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#task-outputs">Task Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder"><code class="docutils literal notranslate"><span class="pre">EdamBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_toplevel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_plusargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_tool_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_flow_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.build"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.build_edam_from_core"><code class="docutils literal notranslate"><span class="pre">build_edam_from_core()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#edam-structure">EDAM Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#builder-pattern">Builder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#convenience-functions">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.configure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_work_root()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_log_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.cleanup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_sim_backend"><code class="docutils literal notranslate"><span class="pre">create_sim_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_fpga_backend"><code class="docutils literal notranslate"><span class="pre">create_fpga_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#backend-lifecycle">Backend Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#error-handling">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#id1">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.toplevel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool_options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.configured</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams"><code class="docutils literal notranslate"><span class="pre">SimBuildParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.build_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.executable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams"><code class="docutils literal notranslate"><span class="pre">SimRunParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.tool"><code class="docutils literal notranslate"><span class="pre">SimRunParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs"><code class="docutils literal notranslate"><span class="pre">SimRunParams.runtime_plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput"><code class="docutils literal notranslate"><span class="pre">SimRunOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.run_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.log_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigure"><code class="docutils literal notranslate"><span class="pre">SimConfigure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuild"><code class="docutils literal notranslate"><span class="pre">SimBuild()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRun"><code class="docutils literal notranslate"><span class="pre">SimRun()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#task-chaining">Task Chaining</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-1-2026-02-03">Version 0.0.1 (2026-02-03)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#initial-release">Initial Release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#breaking-changes">Breaking Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#future-plans">Future Plans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-0-development">Version 0.0.0 (Development)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">dv-flow-libfusesoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">dv-flow-libfusesoc Documentation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dv-flow-libfusesoc-documentation">
+<h1>dv-flow-libfusesoc Documentation<a class="headerlink" href="#dv-flow-libfusesoc-documentation" title="Link to this heading"></a></h1>
+<p>DV Flow extension providing FuseSoC core management and Edalize tool integration.</p>
+<nav class="contents local" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview" id="id1">Overview</a></p>
+<ul>
+<li><p><a class="reference internal" href="#features" id="id2">Features</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#installation" id="id3">Installation</a></p></li>
+<li><p><a class="reference internal" href="#quick-start" id="id4">Quick Start</a></p>
+<ul>
+<li><p><a class="reference internal" href="#basic-simulation-flow" id="id5">Basic Simulation Flow</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#architecture" id="id6">Architecture</a></p>
+<ul>
+<li><p><a class="reference internal" href="#pipeline-overview" id="id7">Pipeline Overview</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#core-components" id="id8">Core Components</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fusesoc-integration" id="id9">FuseSoC Integration</a></p></li>
+<li><p><a class="reference internal" href="#edalize-integration" id="id10">Edalize Integration</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#dv-flow-tasks" id="id11">DV Flow Tasks</a></p>
+<ul>
+<li><p><a class="reference internal" href="#fusesoc-package" id="id12">fusesoc Package</a></p></li>
+<li><p><a class="reference internal" href="#fusesoc-edalize-sim-package" id="id13">fusesoc.edalize.sim Package</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#supported-tools" id="id14">Supported Tools</a></p>
+<ul>
+<li><p><a class="reference internal" href="#simulators" id="id15">Simulators</a></p></li>
+<li><p><a class="reference internal" href="#fpga-tools" id="id16">FPGA Tools</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testing" id="id17">Testing</a></p>
+<ul>
+<li><p><a class="reference internal" href="#test-categories" id="id18">Test Categories</a></p></li>
+<li><p><a class="reference internal" href="#running-tests" id="id19">Running Tests</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#development" id="id20">Development</a></p>
+<ul>
+<li><p><a class="reference internal" href="#project-structure" id="id21">Project Structure</a></p></li>
+<li><p><a class="reference internal" href="#contributing" id="id22">Contributing</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#license" id="id23">License</a></p></li>
+<li><p><a class="reference internal" href="#documentation-contents" id="id24">Documentation Contents</a></p></li>
+<li><p><a class="reference internal" href="#user-guide" id="id25">User Guide</a></p></li>
+<li><p><a class="reference internal" href="#api-reference" id="id26">API Reference</a></p></li>
+<li><p><a class="reference internal" href="#additional-information" id="id27">Additional Information</a></p></li>
+<li><p><a class="reference internal" href="#indices-and-tables" id="id28">Indices and tables</a></p></li>
+</ul>
+</nav>
+<section id="overview">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Overview</a><a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p><strong>dv-flow-libfusesoc</strong> is a DV Flow extension that integrates FuseSoC IP core management
+with Edalize tool flows. It provides a unified interface for resolving FuseSoC cores and
+running simulations, synthesis, linting, and formal verification using various EDA tools.</p>
+<section id="features">
+<h3><a class="toc-backref" href="#id2" role="doc-backlink">Features</a><a class="headerlink" href="#features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FuseSoC Integration</strong>: Resolve and manage FuseSoC IP cores with automatic dependency resolution</p></li>
+<li><p><strong>Edalize Support</strong>: Unified interface to EDA tools via Edalize</p></li>
+<li><p><strong>Simulation Flows</strong>: Run simulations with Icarus Verilog, Verilator, ModelSim, VCS, Xcelium, and GHDL</p></li>
+<li><p><strong>FPGA Flows</strong>: Synthesis and implementation for Vivado, Quartus, and open-source tools</p></li>
+<li><p><strong>Linting</strong>: HDL code quality checks with tool-agnostic interface</p></li>
+<li><p><strong>Formal Verification</strong>: Formal property checking flows</p></li>
+</ul>
+</section>
+</section>
+<section id="installation">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Installation</a><a class="headerlink" href="#installation" title="Link to this heading"></a></h2>
+<p>Install from PyPI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>dv-flow-libfusesoc
+</pre></div>
+</div>
+<p>Or install from source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/your-org/dv-flow-libfusesoc.git
+<span class="nb">cd</span><span class="w"> </span>dv-flow-libfusesoc
+pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="quick-start">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Quick Start</a><a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
+<section id="basic-simulation-flow">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Basic Simulation Flow</a><a class="headerlink" href="#basic-simulation-flow" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.fusesoc_core_resolve</span> <span class="kn">import</span> <span class="n">CoreResolve</span>
+<span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_sim</span> <span class="kn">import</span> <span class="n">SimConfigure</span><span class="p">,</span> <span class="n">SimBuild</span><span class="p">,</span> <span class="n">SimRun</span>
+
+<span class="c1"># 1. Resolve FuseSoC core</span>
+<span class="n">core_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+    <span class="n">core</span><span class="o">=</span><span class="s2">&quot;vendor:lib:uart:1.0&quot;</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+    <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/fusesoc/workspace&quot;</span>
+<span class="p">))</span>
+
+<span class="c1"># 2. Configure simulation</span>
+<span class="n">config_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+    <span class="n">core_name</span><span class="o">=</span><span class="n">core_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">],</span>
+    <span class="n">files</span><span class="o">=</span><span class="n">core_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+    <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;uart_tb&quot;</span><span class="p">,</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;BAUD_RATE&#39;</span><span class="p">:</span> <span class="mi">115200</span><span class="p">}</span>
+<span class="p">))</span>
+
+<span class="c1"># 3. Build simulation</span>
+<span class="n">build_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="n">config_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+<span class="p">))</span>
+
+<span class="c1"># 4. Run simulation</span>
+<span class="n">run_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="n">build_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="architecture">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Architecture</a><a class="headerlink" href="#architecture" title="Link to this heading"></a></h2>
+<section id="pipeline-overview">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Pipeline Overview</a><a class="headerlink" href="#pipeline-overview" title="Link to this heading"></a></h3>
+<p>The library provides a complete pipeline from FuseSoC core files to simulation/synthesis results:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>FuseSoC Core File (.core)
+    ↓
+┌───────────────────────┐
+│  CoreResolve Task     │
+│  - Parse VLNV         │
+│  - Resolve deps       │
+│  - Extract files      │
+└───────────┬───────────┘
+            ↓
+   (files, includes, parameters)
+            ↓
+┌───────────────────────┐
+│  FilesetConverter     │
+│  - Convert formats    │
+│  - Map file types     │
+└───────────┬───────────┘
+            ↓
+   (converted files)
+            ↓
+┌───────────────────────┐
+│  EdamBuilder          │
+│  - Build EDAM         │
+│  - Add parameters     │
+└───────────┬───────────┘
+            ↓
+   (EDAM structure)
+            ↓
+┌───────────────────────┐
+│  SimConfigure Task    │
+│  - Setup tool         │
+│  - Create scripts     │
+└───────────┬───────────┘
+            ↓
+┌───────────────────────┐
+│  SimBuild Task        │
+│  - Compile design     │
+│  - Generate model     │
+└───────────┬───────────┘
+            ↓
+┌───────────────────────┐
+│  SimRun Task          │
+│  - Execute sim        │
+│  - Capture results    │
+└───────────────────────┘
+</pre></div>
+</div>
+</section>
+</section>
+<section id="core-components">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Core Components</a><a class="headerlink" href="#core-components" title="Link to this heading"></a></h2>
+<section id="fusesoc-integration">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">FuseSoC Integration</a><a class="headerlink" href="#fusesoc-integration" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>fusesoc_manager.py</strong></dt><dd><p>Complete FuseSoC API wrapper providing:</p>
+<ul class="simple">
+<li><p>Core resolution with VLNV parsing</p></li>
+<li><p>Library management with core discovery</p></li>
+<li><p>File list extraction with target/flags support</p></li>
+<li><p>Dependency resolution</p></li>
+<li><p>Full workspace isolation support</p></li>
+</ul>
+</dd>
+<dt><strong>fusesoc_core_resolve.py</strong></dt><dd><p>DV Flow task for resolving FuseSoC cores:</p>
+<ul class="simple">
+<li><p>Pydantic parameter models</p></li>
+<li><p>Output models with file lists</p></li>
+<li><p>Memento support for caching</p></li>
+<li><p>Error handling with markers</p></li>
+<li><p>Async task implementation</p></li>
+</ul>
+</dd>
+<dt><strong>fusesoc_fileset.py</strong></dt><dd><p>Fileset converter:</p>
+<ul class="simple">
+<li><p>FuseSoC → DV Flow format conversion</p></li>
+<li><p>File type mapping (Verilog, SystemVerilog, VHDL, constraints)</p></li>
+<li><p>Include directory extraction</p></li>
+<li><p>Logical name/library handling</p></li>
+<li><p>Separate files_root support</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="edalize-integration">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Edalize Integration</a><a class="headerlink" href="#edalize-integration" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>edam_builder.py</strong></dt><dd><p>EDAM (Edalize Design Abstraction Model) construction:</p>
+<ul class="simple">
+<li><p>Builder pattern for EDAM structures</p></li>
+<li><p>File list conversion</p></li>
+<li><p>Parameter &amp; plusarg support</p></li>
+<li><p>Tool &amp; flow options</p></li>
+<li><p>Include directory handling</p></li>
+<li><p>Convenience function: <code class="docutils literal notranslate"><span class="pre">build_edam_from_core()</span></code></p></li>
+</ul>
+</dd>
+<dt><strong>edalize_backend.py</strong></dt><dd><p>Edalize wrapper:</p>
+<ul class="simple">
+<li><p>Generic wrapper for any Edalize flow</p></li>
+<li><p>Configure/Build/Run lifecycle</p></li>
+<li><p>Error handling and reporting</p></li>
+<li><p>Build artifact checking</p></li>
+<li><p>Tool-specific success verification</p></li>
+<li><p>Convenience functions (<code class="docutils literal notranslate"><span class="pre">create_sim_backend</span></code>, <code class="docutils literal notranslate"><span class="pre">create_fpga_backend</span></code>)</p></li>
+</ul>
+</dd>
+<dt><strong>edalize_sim.py</strong></dt><dd><p>Simulation tasks:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">SimConfigure</span></code> - Configure simulation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SimBuild</span></code> - Build simulation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SimRun</span></code> - Execute simulation</p></li>
+<li><p>Task parameter/output models</p></li>
+<li><p>Task chaining support</p></li>
+<li><p>Tool-agnostic API</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="dv-flow-tasks">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">DV Flow Tasks</a><a class="headerlink" href="#dv-flow-tasks" title="Link to this heading"></a></h2>
+<section id="fusesoc-package">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">fusesoc Package</a><a class="headerlink" href="#fusesoc-package" title="Link to this heading"></a></h3>
+<section id="coreresolve">
+<h4>CoreResolve<a class="headerlink" href="#coreresolve" title="Link to this heading"></a></h4>
+<p>Resolves a FuseSoC core by name/VLNV and extracts file lists, dependencies, and metadata.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">core</span></code> (str): Core VLNV (vendor:library:name:version)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code> (str, optional): Target configuration (e.g., ‘sim’, ‘synth’)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool</span></code> (str, optional): Tool name for tool-specific filesets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libraries</span></code> (dict, optional): Additional libraries to add {name: path}</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">workspace</span></code> (str): FuseSoC workspace directory</p></li>
+</ul>
+<p><strong>Outputs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">core_name</span></code> (str): Resolved core name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">core_root</span></code> (str): Core root directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code> (list): Converted file list</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dependencies</span></code> (list): Core dependencies</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameters</span></code> (dict): Core parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_dirs</span></code> (list): Include directories</p></li>
+</ul>
+</section>
+</section>
+<section id="fusesoc-edalize-sim-package">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">fusesoc.edalize.sim Package</a><a class="headerlink" href="#fusesoc-edalize-sim-package" title="Link to this heading"></a></h3>
+<section id="simconfigure">
+<h4>SimConfigure<a class="headerlink" href="#simconfigure" title="Link to this heading"></a></h4>
+<p>Configures a simulation flow using Edalize. Builds EDAM structure from file lists
+and configures the simulation tool.</p>
+<p><strong>Supported Tools:</strong> Icarus Verilog, Verilator, ModelSim, VCS, Xcelium, GHDL</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">core_name</span></code> (str): Name of the design</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files</span></code> (list): File list from core resolution</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_dirs</span></code> (list): Include directories</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">toplevel</span></code> (str): Toplevel module name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool</span></code> (str): Simulation tool (icarus, verilator, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parameters</span></code> (dict, optional): Build-time parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plusargs</span></code> (list, optional): Runtime plusargs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool_options</span></code> (dict, optional): Tool-specific options</p></li>
+</ul>
+<p><strong>Outputs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work_root</span></code> (str): Edalize work directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool</span></code> (str): Configured simulation tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configured</span></code> (bool): Configuration success</p></li>
+</ul>
+</section>
+<section id="simbuild">
+<h4>SimBuild<a class="headerlink" href="#simbuild" title="Link to this heading"></a></h4>
+<p>Builds the simulation model. Handles compilation, elaboration, and generates simulation executable.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work_root</span></code> (str): Edalize work directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool</span></code> (str): Simulation tool</p></li>
+</ul>
+<p><strong>Outputs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work_root</span></code> (str): Edalize work directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">build_success</span></code> (bool): Build success status</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">executable</span></code> (str): Path to simulation executable</p></li>
+</ul>
+</section>
+<section id="simrun">
+<h4>SimRun<a class="headerlink" href="#simrun" title="Link to this heading"></a></h4>
+<p>Runs the simulation with specified parameters. Captures simulation output and determines
+pass/fail status.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work_root</span></code> (str): Edalize work directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tool</span></code> (str): Simulation tool</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">runtime_plusargs</span></code> (list, optional): Additional runtime plusargs</p></li>
+</ul>
+<p><strong>Outputs:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">work_root</span></code> (str): Edalize work directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_success</span></code> (bool): Simulation success status</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log_file</span></code> (str): Path to simulation log</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="supported-tools">
+<h2><a class="toc-backref" href="#id14" role="doc-backlink">Supported Tools</a><a class="headerlink" href="#supported-tools" title="Link to this heading"></a></h2>
+<section id="simulators">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Simulators</a><a class="headerlink" href="#simulators" title="Link to this heading"></a></h3>
+<p>Via Edalize integration:</p>
+<ul class="simple">
+<li><p>✅ <strong>Icarus Verilog</strong> - Open-source Verilog simulator</p></li>
+<li><p>✅ <strong>Verilator</strong> - High-performance Verilog/SystemVerilog simulator</p></li>
+<li><p>🔄 <strong>ModelSim/Questa</strong> - Commercial simulator (API ready)</p></li>
+<li><p>🔄 <strong>VCS</strong> - Synopsys Verilog Compiler Simulator (API ready)</p></li>
+<li><p>🔄 <strong>Xcelium</strong> - Cadence advanced simulator (API ready)</p></li>
+<li><p>🔄 <strong>GHDL</strong> - Open-source VHDL simulator (API ready)</p></li>
+</ul>
+</section>
+<section id="fpga-tools">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">FPGA Tools</a><a class="headerlink" href="#fpga-tools" title="Link to this heading"></a></h3>
+<p>Via Edalize integration:</p>
+<ul class="simple">
+<li><p>🔄 <strong>Vivado</strong> - Xilinx FPGA toolchain (API ready)</p></li>
+<li><p>🔄 <strong>Quartus</strong> - Intel FPGA toolchain (API ready)</p></li>
+<li><p>🔄 <strong>Open-source flows</strong> - Yosys, nextpnr, etc. (API ready)</p></li>
+</ul>
+</section>
+</section>
+<section id="testing">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Testing</a><a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>The project includes comprehensive test coverage:</p>
+<ul class="simple">
+<li><p><strong>Total Tests</strong>: 38</p></li>
+<li><p><strong>Passing</strong>: 36 ✅ (94.7%)</p></li>
+<li><p><strong>Skipped</strong>: 2 (tool-dependent - Icarus/Verilator)</p></li>
+<li><p><strong>Failing</strong>: 0 ❌</p></li>
+</ul>
+<section id="test-categories">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Test Categories</a><a class="headerlink" href="#test-categories" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Extension registration and discovery (2 tests)</p></li>
+<li><p>Isolated test infrastructure (4 tests)</p></li>
+<li><p>FuseSoC core resolution (4 tests)</p></li>
+<li><p>File format conversion (6 tests)</p></li>
+<li><p>EDAM building (11 tests)</p></li>
+<li><p>Edalize backend (3 tests)</p></li>
+<li><p>FuseSoC tasks (3 tests)</p></li>
+<li><p>Edalize tasks (5 tests)</p></li>
+</ul>
+</section>
+<section id="running-tests">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Running Tests</a><a class="headerlink" href="#running-tests" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+pytest
+
+<span class="c1"># Run with coverage</span>
+pytest<span class="w"> </span>--cov<span class="o">=</span>dv_flow.libfusesoc
+
+<span class="c1"># Run specific test category</span>
+pytest<span class="w"> </span>tests/unit/test_fusesoc_manager.py
+</pre></div>
+</div>
+</section>
+</section>
+<section id="development">
+<h2><a class="toc-backref" href="#id20" role="doc-backlink">Development</a><a class="headerlink" href="#development" title="Link to this heading"></a></h2>
+<section id="project-structure">
+<h3><a class="toc-backref" href="#id21" role="doc-backlink">Project Structure</a><a class="headerlink" href="#project-structure" title="Link to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>src/dv_flow/libfusesoc/
+  __ext__.py                    - Extension registration
+  flow.dv                       - Main package tasks
+  sim_flow.dv                   - Simulation flow tasks
+  fpga_flow.dv                  - FPGA flow (stub)
+  lint_flow.dv                  - Lint flow (stub)
+  fusesoc_manager.py            - FuseSoC API wrapper
+  fusesoc_fileset.py            - File format converter
+  fusesoc_core_resolve.py       - CoreResolve task
+  edam_builder.py               - EDAM builder
+  edalize_backend.py            - Edalize wrapper
+  edalize_sim.py                - Simulation tasks
+
+tests/
+  conftest.py                   - Test fixtures
+  fixtures/test_cores/          - Test .core files
+  unit/                         - Unit tests
+  integration/                  - Integration tests
+</pre></div>
+</div>
+</section>
+<section id="contributing">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Contributing</a><a class="headerlink" href="#contributing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Fork the repository</p></li>
+<li><p>Create a feature branch</p></li>
+<li><p>Make your changes with tests</p></li>
+<li><p>Run the test suite</p></li>
+<li><p>Submit a pull request</p></li>
+</ol>
+<p>All contributions must:</p>
+<ul class="simple">
+<li><p>Include tests for new functionality</p></li>
+<li><p>Maintain or improve test coverage</p></li>
+<li><p>Follow existing code style</p></li>
+<li><p>Update documentation as needed</p></li>
+</ul>
+</section>
+</section>
+<section id="license">
+<h2><a class="toc-backref" href="#id23" role="doc-backlink">License</a><a class="headerlink" href="#license" title="Link to this heading"></a></h2>
+<p>Apache License 2.0 - See LICENSE file for details.</p>
+</section>
+<section id="documentation-contents">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Documentation Contents</a><a class="headerlink" href="#documentation-contents" title="Link to this heading"></a></h2>
+</section>
+<section id="user-guide">
+<h2><a class="toc-backref" href="#id25" role="doc-backlink">User Guide</a><a class="headerlink" href="#user-guide" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start-tutorial">Quick Start Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#common-issues">Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage_examples.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#basic-examples">Basic Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#advanced-examples">Advanced Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#integration-examples">Integration Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#real-world-examples">Real-World Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#tips-and-best-practices">Tips and Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick_reference.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-commands">Common Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#parameter-reference">Parameter Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#supported-tools">Supported Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#tool-specific-options">Tool-Specific Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-patterns">Common Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#file-type-mappings">File Type Mappings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="api-reference">
+<h2><a class="toc-backref" href="#id26" role="doc-backlink">API Reference</a><a class="headerlink" href="#api-reference" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#core-modules">Core Modules</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="additional-information">
+<h2><a class="toc-backref" href="#id27" role="doc-backlink">Additional Information</a><a class="headerlink" href="#additional-information" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h2><a class="toc-backref" href="#id28" role="doc-backlink">Indices and tables</a><a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Ballance.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

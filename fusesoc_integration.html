@@ -1,0 +1,924 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FuseSoC Integration &mdash; dv-flow-libfusesoc 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Edalize Integration" href="edalize_integration.html" />
+    <link rel="prev" title="Quick Reference" href="quick_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dv-flow-libfusesoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#required-knowledge">Required Knowledge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-simulation-tools">Install Simulation Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start-tutorial">Quick Start Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-1-set-up-fusesoc-workspace">Step 1: Set Up FuseSoC Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-2-create-a-simple-core">Step 2: Create a Simple Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-3-run-your-first-simulation">Step 3: Run Your First Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#common-issues">Common Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#core-not-found">Core Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#build-failures">Build Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#tool-not-found">Tool Not Found</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage_examples.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-1-simple-core-resolution">Example 1: Simple Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-2-icarus-verilog-simulation">Example 2: Icarus Verilog Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-3-verilator-simulation">Example 3: Verilator Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-4-using-multiple-libraries">Example 4: Using Multiple Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-5-parameterized-simulation">Example 5: Parameterized Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-6-error-handling">Example 6: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#integration-examples">Integration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-7-integration-with-dv-flow">Example 7: Integration with DV Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-8-custom-task-integration">Example 8: Custom Task Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#real-world-examples">Real-World Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-9-uart-simulation">Example 9: UART Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-10-soc-subsystem-simulation">Example 10: SoC Subsystem Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#performance-optimization">Performance Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#debugging-tips">Debugging Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#workspace-management">Workspace Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#coreresolve-task">CoreResolve Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#corefetch-task">CoreFetch Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#complete-simulation-flow-example">Complete Simulation Flow Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#creating-custom-tasks">Creating Custom Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick_reference.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-commands">Common Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#core-resolution">Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulation-flow">Simulation Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#parameter-reference">Parameter Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#coreresolve-parameters">CoreResolve Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simconfigure-parameters">SimConfigure Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#supported-tools">Supported Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulators">Simulators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#tool-specific-options">Tool-Specific Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#icarus-verilog">Icarus Verilog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#verilator">Verilator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#modelsim-questa">ModelSim/Questa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#vcs">VCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-patterns">Common Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-multiple-test-cases">Pattern: Multiple Test Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-parameterized-configurations">Pattern: Parameterized Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-error-handling">Pattern: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#file-type-mappings">File Type Mappings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-to-dv-flow">FuseSoC to DV Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-variables">FuseSoC Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#common-errors">Common Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#debug-commands">Debug Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#external-links">External Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">FuseSoC Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_manager()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.add_library()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_core()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter"><code class="docutils literal notranslate"><span class="pre">FilesetConverter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.FILE_TYPE_MAP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.convert_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.extract_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.filter_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.get_source_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conversion-features">Conversion Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-type-mapping">File Type Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.libraries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.workspace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.last_resolution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve"><code class="docutils literal notranslate"><span class="pre">CoreResolve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-parameters">Task Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-outputs">Task Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usage-example">Usage Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder"><code class="docutils literal notranslate"><span class="pre">EdamBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_toplevel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_plusargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_tool_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_flow_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.build"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.build_edam_from_core"><code class="docutils literal notranslate"><span class="pre">build_edam_from_core()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#edam-structure">EDAM Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#builder-pattern">Builder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#convenience-functions">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.configure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_work_root()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_log_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.cleanup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_sim_backend"><code class="docutils literal notranslate"><span class="pre">create_sim_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_fpga_backend"><code class="docutils literal notranslate"><span class="pre">create_fpga_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#backend-lifecycle">Backend Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#error-handling">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#id1">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.toplevel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool_options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.configured</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams"><code class="docutils literal notranslate"><span class="pre">SimBuildParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.build_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.executable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams"><code class="docutils literal notranslate"><span class="pre">SimRunParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.tool"><code class="docutils literal notranslate"><span class="pre">SimRunParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs"><code class="docutils literal notranslate"><span class="pre">SimRunParams.runtime_plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput"><code class="docutils literal notranslate"><span class="pre">SimRunOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.run_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.log_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigure"><code class="docutils literal notranslate"><span class="pre">SimConfigure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuild"><code class="docutils literal notranslate"><span class="pre">SimBuild()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRun"><code class="docutils literal notranslate"><span class="pre">SimRun()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#task-chaining">Task Chaining</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html#core-modules">Core Modules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">FuseSoC Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-1-2026-02-03">Version 0.0.1 (2026-02-03)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#initial-release">Initial Release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#breaking-changes">Breaking Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#future-plans">Future Plans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-0-development">Version 0.0.0 (Development)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dv-flow-libfusesoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">FuseSoC Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/fusesoc_integration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="fusesoc-integration">
+<h1>FuseSoC Integration<a class="headerlink" href="#fusesoc-integration" title="Link to this heading"></a></h1>
+<p>This module provides integration with FuseSoC for IP core management.</p>
+<section id="module-dv_flow.libfusesoc.fusesoc_manager">
+<span id="fusesoc-manager"></span><h2>fusesoc_manager<a class="headerlink" href="#module-dv_flow.libfusesoc.fusesoc_manager" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.fusesoc_manager.</span></span><span class="sig-name descname"><span class="pre">FuseSoCManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Wrapper around FuseSoC’s CoreManager and LibraryManager.
+Provides isolated workspace management for DV Flow integration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize FuseSoC manager with optional isolated directories.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config_dir</strong> – Directory for FuseSoC configuration</p></li>
+<li><p><strong>data_dir</strong> – Directory for FuseSoC data (cores, cache)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager">
+<span class="sig-name descname"><span class="pre">get_core_manager</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">CoreManager</span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.get_core_manager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager" title="Link to this definition"></a></dt>
+<dd><p>Get or create CoreManager instance</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library">
+<span class="sig-name descname"><span class="pre">add_library</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">sync_uri</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.add_library"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library" title="Link to this definition"></a></dt>
+<dd><p>Add a core library to the manager.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> – Library name</p></li>
+<li><p><strong>path</strong> – Local path to library</p></li>
+<li><p><strong>sync_uri</strong> – Optional remote URI for library sync</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core">
+<span class="sig-name descname"><span class="pre">resolve_core</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.resolve_core"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core" title="Link to this definition"></a></dt>
+<dd><p>Resolve a core by name/VLNV.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>core_name</strong> – Core name in VLNV format (vendor:library:name:version)</p></li>
+<li><p><strong>flags</strong> – Optional flags for core resolution (e.g., tool, target)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Resolved core object with file lists and metadata</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files">
+<span class="sig-name descname"><span class="pre">get_core_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.get_core_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files" title="Link to this definition"></a></dt>
+<dd><p>Get file lists from a resolved core.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>core</strong> – Resolved core object</p></li>
+<li><p><strong>flags</strong> – Optional flags for target selection (e.g., {‘tool’: ‘icarus’, ‘target’: ‘sim’})</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary containing file lists with attributes, include directories, and metadata</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies">
+<span class="sig-name descname"><span class="pre">get_dependencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.get_dependencies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies" title="Link to this definition"></a></dt>
+<dd><p>Get dependency tree for a core.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>core</strong> – Resolved core object</p></li>
+<li><p><strong>flags</strong> – Optional flags for dependency resolution</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of dependent cores</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies">
+<span class="sig-name descname"><span class="pre">resolve_dependencies</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_manager.html#FuseSoCManager.resolve_dependencies"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies" title="Link to this definition"></a></dt>
+<dd><p>Recursively resolve all dependencies for a core.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>core_name</strong> – Core name in VLNV format</p></li>
+<li><p><strong>flags</strong> – Optional flags for resolution</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of all resolved cores including dependencies</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>The FuseSoC Manager provides a wrapper around FuseSoC’s core functionality, enabling:</p>
+<ul class="simple">
+<li><p>Core discovery and resolution</p></li>
+<li><p>Library management</p></li>
+<li><p>Dependency tracking</p></li>
+<li><p>File list extraction</p></li>
+<li><p>Workspace isolation</p></li>
+</ul>
+<section id="key-features">
+<h3>Key Features<a class="headerlink" href="#key-features" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>Core Resolution</strong></dt><dd><p>Parse VLNV (Vendor:Library:Name:Version) identifiers and resolve cores with their dependencies.</p>
+</dd>
+<dt><strong>Library Management</strong></dt><dd><p>Add and manage FuseSoC libraries, with support for multiple core sources.</p>
+</dd>
+<dt><strong>File Extraction</strong></dt><dd><p>Extract file lists filtered by target, tool, and flags.</p>
+</dd>
+<dt><strong>Workspace Isolation</strong></dt><dd><p>All operations are performed within a configured workspace directory,
+ensuring no interference with user’s global FuseSoC configuration.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="module-dv_flow.libfusesoc.fusesoc_fileset">
+<span id="fusesoc-fileset"></span><h2>fusesoc_fileset<a class="headerlink" href="#module-dv_flow.libfusesoc.fusesoc_fileset" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.fusesoc_fileset.</span></span><span class="sig-name descname"><span class="pre">FilesetConverter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_fileset.html#FilesetConverter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Converts FuseSoC core filesets to DV Flow file collection format.
+Handles file type mapping and attribute conversion.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP">
+<span class="sig-name descname"><span class="pre">FILE_TYPE_MAP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'LPF':</span> <span class="pre">'constraint',</span> <span class="pre">'PCF':</span> <span class="pre">'constraint',</span> <span class="pre">'SDC':</span> <span class="pre">'constraint',</span> <span class="pre">'UCF':</span> <span class="pre">'constraint',</span> <span class="pre">'systemVerilogSource':</span> <span class="pre">'systemverilog',</span> <span class="pre">'tclSource':</span> <span class="pre">'tcl',</span> <span class="pre">'user':</span> <span class="pre">'user',</span> <span class="pre">'verilogSource':</span> <span class="pre">'verilog',</span> <span class="pre">'vhdlSource':</span> <span class="pre">'vhdl',</span> <span class="pre">'vhdlSource-2008':</span> <span class="pre">'vhdl',</span> <span class="pre">'xdc':</span> <span class="pre">'constraint'}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_fileset.html#FilesetConverter.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize fileset converter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>core_root</strong> – Root directory of the core file</p></li>
+<li><p><strong>files_root</strong> – Root directory for fetched files (if different from core_root)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files">
+<span class="sig-name descname"><span class="pre">convert_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fusesoc_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_fileset.html#FilesetConverter.convert_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files" title="Link to this definition"></a></dt>
+<dd><p>Convert FuseSoC file list to DV Flow format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fusesoc_files</strong> – List of files from FuseSoC core (from core.get_files())</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of file dictionaries in DV Flow format</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs">
+<span class="sig-name descname"><span class="pre">extract_include_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fusesoc_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_fileset.html#FilesetConverter.extract_include_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs" title="Link to this definition"></a></dt>
+<dd><p>Extract include directories from file list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fusesoc_files</strong> – List of files from FuseSoC core</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of include directory paths</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type">
+<span class="sig-name descname"><span class="pre">filter_by_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">converted_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_fileset.html#FilesetConverter.filter_by_type"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type" title="Link to this definition"></a></dt>
+<dd><p>Filter files by type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>converted_files</strong> – List of converted file dictionaries</p></li>
+<li><p><strong>file_types</strong> – List of file types to include</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Filtered list of files</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files">
+<span class="sig-name descname"><span class="pre">get_source_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">converted_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_fileset.html#FilesetConverter.get_source_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files" title="Link to this definition"></a></dt>
+<dd><p>Get only source files (exclude constraints, scripts, etc).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>converted_files</strong> – List of converted file dictionaries</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of source files</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<p>The Fileset Converter transforms FuseSoC file structures into DV Flow compatible formats.</p>
+<section id="conversion-features">
+<h3>Conversion Features<a class="headerlink" href="#conversion-features" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Maps FuseSoC file types to standard categories (Verilog, SystemVerilog, VHDL, constraints)</p></li>
+<li><p>Extracts include directories</p></li>
+<li><p>Handles logical names and library specifications</p></li>
+<li><p>Supports separate files_root for file path resolution</p></li>
+<li><p>Preserves file metadata and attributes</p></li>
+</ul>
+</section>
+<section id="file-type-mapping">
+<h3>File Type Mapping<a class="headerlink" href="#file-type-mapping" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>FuseSoC</p></th>
+<th class="head"><p>DV Flow</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>verilogSource</p></td>
+<td><p>verilog</p></td>
+</tr>
+<tr class="row-odd"><td><p>systemVerilogSource</p></td>
+<td><p>systemverilog</p></td>
+</tr>
+<tr class="row-even"><td><p>vhdlSource</p></td>
+<td><p>vhdl</p></td>
+</tr>
+<tr class="row-odd"><td><p>tclSource</p></td>
+<td><p>tcl</p></td>
+</tr>
+<tr class="row-even"><td><p>SDC</p></td>
+<td><p>sdc</p></td>
+</tr>
+<tr class="row-odd"><td><p>xdc</p></td>
+<td><p>xdc</p></td>
+</tr>
+<tr class="row-even"><td><p>user</p></td>
+<td><p>user</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="module-dv_flow.libfusesoc.fusesoc_core_resolve">
+<span id="fusesoc-core-resolve"></span><h2>fusesoc_core_resolve<a class="headerlink" href="#module-dv_flow.libfusesoc.fusesoc_core_resolve" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.fusesoc_core_resolve.</span></span><span class="sig-name descname"><span class="pre">CoreResolveParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">libraries:</span> <span class="pre">~typing.Dict[str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workspace:</span> <span class="pre">str</span> <span class="pre">|</span> <span class="pre">None</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_core_resolve.html#CoreResolveParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Parameters for CoreResolve task.</p>
+<p>Resolves a FuseSoC core and extracts file lists.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core">
+<span class="sig-name descname"><span class="pre">core</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target">
+<span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool">
+<span class="sig-name descname"><span class="pre">tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries">
+<span class="sig-name descname"><span class="pre">libraries</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace">
+<span class="sig-name descname"><span class="pre">workspace</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.fusesoc_core_resolve.</span></span><span class="sig-name descname"><span class="pre">CoreResolveOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core_name:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">core_root:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files_root:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files:</span> <span class="pre">~typing.List[~typing.Dict]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dependencies:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters:</span> <span class="pre">~typing.Dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_dirs:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_core_resolve.html#CoreResolveOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Output from CoreResolve task.</p>
+<p>Contains resolved core information and file lists.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name">
+<span class="sig-name descname"><span class="pre">core_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root">
+<span class="sig-name descname"><span class="pre">core_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root">
+<span class="sig-name descname"><span class="pre">files_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files">
+<span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies">
+<span class="sig-name descname"><span class="pre">dependencies</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs">
+<span class="sig-name descname"><span class="pre">include_dirs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.fusesoc_core_resolve.</span></span><span class="sig-name descname"><span class="pre">CoreResolveMemento</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">core</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">core_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">last_resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_core_resolve.html#CoreResolveMemento"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Memento for CoreResolve task.</p>
+<p>Caches resolved core information.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core">
+<span class="sig-name descname"><span class="pre">core</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target">
+<span class="sig-name descname"><span class="pre">target</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool">
+<span class="sig-name descname"><span class="pre">tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name">
+<span class="sig-name descname"><span class="pre">core_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution">
+<span class="sig-name descname"><span class="pre">last_resolution</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.fusesoc_core_resolve.</span></span><span class="sig-name descname"><span class="pre">CoreResolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TaskDataInput</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams" title="dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams"><span class="pre">CoreResolveParams</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TaskDataResult</span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/fusesoc_core_resolve.html#CoreResolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve" title="Link to this definition"></a></dt>
+<dd><p>Resolve a FuseSoC core and extract file lists.</p>
+<p>This task:
+1. Initializes FuseSoC in the specified workspace
+2. Adds any additional libraries
+3. Resolves the specified core
+4. Extracts and converts file lists
+5. Returns file information for downstream tasks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runner</strong> – Task runner context</p></li>
+<li><p><strong>input</strong> – Task input with CoreResolveParams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>TaskDataResult with CoreResolveOutput</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The CoreResolve task is the main entry point for resolving FuseSoC cores in DV Flow.</p>
+<section id="task-parameters">
+<h3>Task Parameters<a class="headerlink" href="#task-parameters" title="Link to this heading"></a></h3>
+<p>The task accepts the following parameters through <code class="docutils literal notranslate"><span class="pre">CoreResolveParams</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CoreResolveParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">core</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># VLNV identifier</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sim&quot;</span>  <span class="c1"># Target configuration</span>
+    <span class="n">tool</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Tool name</span>
+    <span class="n">libraries</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Additional libraries</span>
+    <span class="n">workspace</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># FuseSoC workspace path</span>
+    <span class="n">flags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Build flags</span>
+</pre></div>
+</div>
+</section>
+<section id="task-outputs">
+<h3>Task Outputs<a class="headerlink" href="#task-outputs" title="Link to this heading"></a></h3>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">CoreResolveOutput</span></code> containing:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CoreResolveOutput</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">core_name</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Resolved core name</span>
+    <span class="n">core_root</span><span class="p">:</span> <span class="nb">str</span>  <span class="c1"># Core root directory</span>
+    <span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span>  <span class="c1"># Converted file list</span>
+    <span class="n">dependencies</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># Core dependencies</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>  <span class="c1"># Core parameters</span>
+    <span class="n">include_dirs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>  <span class="c1"># Include directories</span>
+</pre></div>
+</div>
+</section>
+<section id="usage-example">
+<h3>Usage Example<a class="headerlink" href="#usage-example" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.fusesoc_core_resolve</span> <span class="kn">import</span> <span class="n">CoreResolve</span><span class="p">,</span> <span class="n">CoreResolveParams</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+    <span class="n">core</span><span class="o">=</span><span class="s2">&quot;vendor:lib:uart:1.0&quot;</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+    <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/workspace&quot;</span><span class="p">,</span>
+    <span class="n">libraries</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mylib&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/mylib&quot;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resolved core: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Files: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dependencies: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;dependencies&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_reference.html" class="btn btn-neutral float-left" title="Quick Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="edalize_integration.html" class="btn btn-neutral float-right" title="Edalize Integration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Ballance.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edalize Integration &mdash; dv-flow-libfusesoc 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="modules.html" />
+    <link rel="prev" title="FuseSoC Integration" href="fusesoc_integration.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dv-flow-libfusesoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#required-knowledge">Required Knowledge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-simulation-tools">Install Simulation Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start-tutorial">Quick Start Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-1-set-up-fusesoc-workspace">Step 1: Set Up FuseSoC Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-2-create-a-simple-core">Step 2: Create a Simple Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-3-run-your-first-simulation">Step 3: Run Your First Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#common-issues">Common Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#core-not-found">Core Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#build-failures">Build Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#tool-not-found">Tool Not Found</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage_examples.html">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-1-simple-core-resolution">Example 1: Simple Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-2-icarus-verilog-simulation">Example 2: Icarus Verilog Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-3-verilator-simulation">Example 3: Verilator Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-4-using-multiple-libraries">Example 4: Using Multiple Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-5-parameterized-simulation">Example 5: Parameterized Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-6-error-handling">Example 6: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#integration-examples">Integration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-7-integration-with-dv-flow">Example 7: Integration with DV Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-8-custom-task-integration">Example 8: Custom Task Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#real-world-examples">Real-World Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-9-uart-simulation">Example 9: UART Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#example-10-soc-subsystem-simulation">Example 10: SoC Subsystem Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage_examples.html#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#performance-optimization">Performance Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#debugging-tips">Debugging Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage_examples.html#workspace-management">Workspace Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#coreresolve-task">CoreResolve Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#corefetch-task">CoreFetch Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#complete-simulation-flow-example">Complete Simulation Flow Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#creating-custom-tasks">Creating Custom Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick_reference.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-commands">Common Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#core-resolution">Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulation-flow">Simulation Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#parameter-reference">Parameter Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#coreresolve-parameters">CoreResolve Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simconfigure-parameters">SimConfigure Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#supported-tools">Supported Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulators">Simulators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#tool-specific-options">Tool-Specific Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#icarus-verilog">Icarus Verilog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#verilator">Verilator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#modelsim-questa">ModelSim/Questa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#vcs">VCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-patterns">Common Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-multiple-test-cases">Pattern: Multiple Test Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-parameterized-configurations">Pattern: Parameterized Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-error-handling">Pattern: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#file-type-mappings">File Type Mappings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-to-dv-flow">FuseSoC to DV Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-variables">FuseSoC Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#common-errors">Common Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#debug-commands">Debug Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#external-links">External Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_manager()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.add_library()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_core()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter"><code class="docutils literal notranslate"><span class="pre">FilesetConverter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.FILE_TYPE_MAP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.convert_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.extract_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.filter_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.get_source_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#conversion-features">Conversion Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#file-type-mapping">File Type Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.libraries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.workspace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.last_resolution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve"><code class="docutils literal notranslate"><span class="pre">CoreResolve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#task-parameters">Task Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#task-outputs">Task Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Edalize Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-dv_flow.libfusesoc.edam_builder">edam_builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder"><code class="docutils literal notranslate"><span class="pre">EdamBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_toplevel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_plusargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_tool_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_flow_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.build"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.build_edam_from_core"><code class="docutils literal notranslate"><span class="pre">build_edam_from_core()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edam-structure">EDAM Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#builder-pattern">Builder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convenience-functions">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.configure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_work_root()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_log_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.cleanup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.create_sim_backend"><code class="docutils literal notranslate"><span class="pre">create_sim_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.create_fpga_backend"><code class="docutils literal notranslate"><span class="pre">create_fpga_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backend-lifecycle">Backend Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-handling">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.toplevel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool_options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.configured</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams"><code class="docutils literal notranslate"><span class="pre">SimBuildParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.build_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.executable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams"><code class="docutils literal notranslate"><span class="pre">SimRunParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.tool"><code class="docutils literal notranslate"><span class="pre">SimRunParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs"><code class="docutils literal notranslate"><span class="pre">SimRunParams.runtime_plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput"><code class="docutils literal notranslate"><span class="pre">SimRunOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.run_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.log_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigure"><code class="docutils literal notranslate"><span class="pre">SimConfigure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuild"><code class="docutils literal notranslate"><span class="pre">SimBuild()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRun"><code class="docutils literal notranslate"><span class="pre">SimRun()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-chaining">Task Chaining</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="modules.html#core-modules">Core Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Edalize Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-dv_flow.libfusesoc.edam_builder">edam_builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-1-2026-02-03">Version 0.0.1 (2026-02-03)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#initial-release">Initial Release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#breaking-changes">Breaking Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#future-plans">Future Plans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-0-development">Version 0.0.0 (Development)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dv-flow-libfusesoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Edalize Integration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/edalize_integration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="edalize-integration">
+<h1>Edalize Integration<a class="headerlink" href="#edalize-integration" title="Link to this heading"></a></h1>
+<p>This module provides integration with Edalize for EDA tool flows.</p>
+<section id="module-dv_flow.libfusesoc.edam_builder">
+<span id="edam-builder"></span><h2>edam_builder<a class="headerlink" href="#module-dv_flow.libfusesoc.edam_builder" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edam_builder.</span></span><span class="sig-name descname"><span class="pre">EdamBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Builds EDAM (EDA Metadata) structures for Edalize.</p>
+<p>EDAM is the data structure that Edalize uses to describe all inputs
+needed for EDA tool operations (simulation, synthesis, etc.).</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize EDAM builder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> – Project/design name</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files">
+<span class="sig-name descname"><span class="pre">add_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.add_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files" title="Link to this definition"></a></dt>
+<dd><p>Add files to EDAM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>files</strong> – List of file dictionaries with ‘name’ and ‘file_type’</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel">
+<span class="sig-name descname"><span class="pre">set_toplevel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">toplevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.set_toplevel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel" title="Link to this definition"></a></dt>
+<dd><p>Set toplevel module(s).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>toplevel</strong> – Toplevel module name (string for Edalize compatibility)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters">
+<span class="sig-name descname"><span class="pre">add_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.add_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters" title="Link to this definition"></a></dt>
+<dd><p>Add parameters (Verilog defines, VHDL generics, plusargs).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parameters</strong> – Dictionary of parameter names to values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs">
+<span class="sig-name descname"><span class="pre">add_plusargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plusargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.add_plusargs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs" title="Link to this definition"></a></dt>
+<dd><p>Add runtime plusargs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>plusargs</strong> – Dictionary of plusarg names to values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options">
+<span class="sig-name descname"><span class="pre">set_tool_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.set_tool_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options" title="Link to this definition"></a></dt>
+<dd><p>Set tool-specific options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tool</strong> – Tool name (e.g., ‘icarus’, ‘verilator’)</p></li>
+<li><p><strong>options</strong> – Dictionary of tool options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options">
+<span class="sig-name descname"><span class="pre">set_flow_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.set_flow_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options" title="Link to this definition"></a></dt>
+<dd><p>Set flow-level options.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>options</strong> – Dictionary of flow options (e.g., {‘tool’: ‘icarus’, ‘target’: ‘sim’})</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs">
+<span class="sig-name descname"><span class="pre">add_include_dirs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">include_dirs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder" title="dv_flow.libfusesoc.edam_builder.EdamBuilder"><span class="pre">EdamBuilder</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.add_include_dirs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs" title="Link to this definition"></a></dt>
+<dd><p>Add include directories (convenience method).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>include_dirs</strong> – List of include directory paths</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Self for chaining</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.EdamBuilder.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#EdamBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.EdamBuilder.build" title="Link to this definition"></a></dt>
+<dd><p>Build and return the EDAM structure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Complete EDAM dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edam_builder.build_edam_from_core">
+<span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edam_builder.</span></span><span class="sig-name descname"><span class="pre">build_edam_from_core</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">core_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">toplevel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'icarus'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plusargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edam_builder.html#build_edam_from_core"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edam_builder.build_edam_from_core" title="Link to this definition"></a></dt>
+<dd><p>Convenience function to build EDAM from FuseSoC core files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>core_files</strong> – Dictionary from FuseSoCManager.get_core_files()</p></li>
+<li><p><strong>toplevel</strong> – Toplevel module name</p></li>
+<li><p><strong>tool</strong> – Target tool (default: ‘icarus’)</p></li>
+<li><p><strong>parameters</strong> – Optional build-time parameters</p></li>
+<li><p><strong>plusargs</strong> – Optional runtime plusargs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Complete EDAM dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The EDAM Builder constructs Edalize Design Abstraction Model (EDAM) structures.</p>
+<section id="edam-structure">
+<h3>EDAM Structure<a class="headerlink" href="#edam-structure" title="Link to this heading"></a></h3>
+<p>EDAM is Edalize’s unified data structure for describing designs:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">edam</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;design_name&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;file.v&#39;</span><span class="p">,</span> <span class="s1">&#39;file_type&#39;</span><span class="p">:</span> <span class="s1">&#39;verilogSource&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;file.sv&#39;</span><span class="p">,</span> <span class="s1">&#39;file_type&#39;</span><span class="p">:</span> <span class="s1">&#39;systemVerilogSource&#39;</span><span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;toplevel&#39;</span><span class="p">:</span> <span class="s1">&#39;top_module&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;parameters&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;WIDTH&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+        <span class="s1">&#39;DEPTH&#39;</span><span class="p">:</span> <span class="mi">1024</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;tool_options&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;icarus&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;iverilog_options&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;-g2009&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="builder-pattern">
+<h3>Builder Pattern<a class="headerlink" href="#builder-pattern" title="Link to this heading"></a></h3>
+<p>The EdamBuilder uses a fluent interface for constructing EDAM:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edam_builder</span> <span class="kn">import</span> <span class="n">EdamBuilder</span>
+
+<span class="n">builder</span> <span class="o">=</span> <span class="n">EdamBuilder</span><span class="p">(</span><span class="s2">&quot;my_design&quot;</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">set_toplevel</span><span class="p">(</span><span class="s2">&quot;top_module&quot;</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_files</span><span class="p">(</span><span class="n">file_list</span><span class="p">)</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_parameters</span><span class="p">({</span><span class="s1">&#39;WIDTH&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">})</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">add_include_dirs</span><span class="p">([</span><span class="s1">&#39;/path/to/includes&#39;</span><span class="p">])</span>
+<span class="n">builder</span><span class="o">.</span><span class="n">set_tool_options</span><span class="p">(</span><span class="s1">&#39;icarus&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;iverilog_options&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;-g2009&#39;</span><span class="p">]})</span>
+
+<span class="n">edam</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="convenience-functions">
+<h3>Convenience Functions<a class="headerlink" href="#convenience-functions" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>build_edam_from_core()</strong></dt><dd><p>Builds EDAM directly from CoreResolve output:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edam_builder</span> <span class="kn">import</span> <span class="n">build_edam_from_core</span>
+
+<span class="n">edam</span> <span class="o">=</span> <span class="n">build_edam_from_core</span><span class="p">(</span>
+    <span class="n">core_name</span><span class="o">=</span><span class="s2">&quot;uart&quot;</span><span class="p">,</span>
+    <span class="n">files</span><span class="o">=</span><span class="n">core_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+    <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;uart_top&quot;</span><span class="p">,</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;BAUD_RATE&#39;</span><span class="p">:</span> <span class="mi">115200</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="module-dv_flow.libfusesoc.edalize_backend">
+<span id="edalize-backend"></span><h2>edalize_backend<a class="headerlink" href="#module-dv_flow.libfusesoc.edalize_backend" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_backend.</span></span><span class="sig-name descname"><span class="pre">EdalizeBackend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Wrapper around Edalize backend/flow instantiation and execution.
+Handles the configure/build/run lifecycle for EDA tools.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">flow_class</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialize Edalize backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>flow_class</strong> – Edalize flow class (e.g., Sim, Vivado)</p></li>
+<li><p><strong>edam</strong> – EDAM dictionary</p></li>
+<li><p><strong>work_root</strong> – Working directory for tool execution</p></li>
+<li><p><strong>verbose</strong> – Enable verbose output</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure">
+<span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.configure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure" title="Link to this definition"></a></dt>
+<dd><p>Configure the flow (setup files, generate scripts).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if successful, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build">
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build" title="Link to this definition"></a></dt>
+<dd><p>Build the design (compile, elaborate).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> – Optional additional build arguments (deprecated, unused)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple of (success, output)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run" title="Link to this definition"></a></dt>
+<dd><p>Run the design (simulate, program FPGA, etc.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>args</strong> – Optional additional run arguments (deprecated, unused)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Tuple of (success, output)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool">
+<span class="sig-name descname"><span class="pre">get_tool</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.get_tool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool" title="Link to this definition"></a></dt>
+<dd><p>Get the tool name being used.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root">
+<span class="sig-name descname"><span class="pre">get_work_root</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.get_work_root"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root" title="Link to this definition"></a></dt>
+<dd><p>Get the work directory path.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files">
+<span class="sig-name descname"><span class="pre">get_log_files</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.get_log_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files" title="Link to this definition"></a></dt>
+<dd><p>Get list of log files generated during build/run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of log file paths</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup">
+<span class="sig-name descname"><span class="pre">cleanup</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#EdalizeBackend.cleanup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup" title="Link to this definition"></a></dt>
+<dd><p>Clean up work directory.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.create_sim_backend">
+<span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_backend.</span></span><span class="sig-name descname"><span class="pre">create_sim_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend" title="dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><span class="pre">EdalizeBackend</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#create_sim_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.create_sim_backend" title="Link to this definition"></a></dt>
+<dd><p>Convenience function to create a simulation backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edam</strong> – EDAM dictionary</p></li>
+<li><p><strong>work_root</strong> – Working directory</p></li>
+<li><p><strong>verbose</strong> – Enable verbose output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>EdalizeBackend instance configured for simulation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_backend.create_fpga_backend">
+<span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_backend.</span></span><span class="sig-name descname"><span class="pre">create_fpga_backend</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">edam</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dv_flow.libfusesoc.edalize_backend.EdalizeBackend" title="dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><span class="pre">EdalizeBackend</span></a></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_backend.html#create_fpga_backend"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_backend.create_fpga_backend" title="Link to this definition"></a></dt>
+<dd><p>Convenience function to create an FPGA synthesis backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>edam</strong> – EDAM dictionary</p></li>
+<li><p><strong>work_root</strong> – Working directory</p></li>
+<li><p><strong>verbose</strong> – Enable verbose output</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>EdalizeBackend instance configured for FPGA synthesis</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>The Edalize Backend provides a wrapper around Edalize tool flows.</p>
+<section id="backend-lifecycle">
+<h3>Backend Lifecycle<a class="headerlink" href="#backend-lifecycle" title="Link to this heading"></a></h3>
+<p>The backend manages the three-phase Edalize lifecycle:</p>
+<ol class="arabic simple">
+<li><p><strong>Configure</strong>: Setup tool environment and generate build scripts</p></li>
+<li><p><strong>Build</strong>: Compile/elaborate the design</p></li>
+<li><p><strong>Run</strong>: Execute the tool (simulation, synthesis, etc.)</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_backend</span> <span class="kn">import</span> <span class="n">EdalizeBackend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">EdalizeBackend</span><span class="p">(</span><span class="n">edam</span><span class="p">,</span> <span class="n">work_root</span><span class="p">,</span> <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span><span class="p">)</span>
+
+<span class="c1"># Phase 1: Configure</span>
+<span class="n">backend</span><span class="o">.</span><span class="n">configure</span><span class="p">()</span>
+
+<span class="c1"># Phase 2: Build</span>
+<span class="n">success</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_stderr</span><span class="p">())</span>
+
+<span class="c1"># Phase 3: Run</span>
+<span class="n">success</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="error-handling">
+<h3>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h3>
+<p>The backend provides comprehensive error reporting:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stdout()</span></code> - Capture tool standard output</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_stderr()</span></code> - Capture tool standard error</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">get_returncode()</span></code> - Get tool exit code</p></li>
+<li><p>Tool-specific success verification</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>Convenience Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><strong>create_sim_backend()</strong></dt><dd><p>Creates a backend configured for simulation:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_backend</span> <span class="kn">import</span> <span class="n">create_sim_backend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">create_sim_backend</span><span class="p">(</span>
+    <span class="n">edam</span><span class="o">=</span><span class="n">edam</span><span class="p">,</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="s2">&quot;/path/to/work&quot;</span><span class="p">,</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt><strong>create_fpga_backend()</strong></dt><dd><p>Creates a backend configured for FPGA synthesis:</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_backend</span> <span class="kn">import</span> <span class="n">create_fpga_backend</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">create_fpga_backend</span><span class="p">(</span>
+    <span class="n">edam</span><span class="o">=</span><span class="n">edam</span><span class="p">,</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="s2">&quot;/path/to/work&quot;</span><span class="p">,</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;vivado&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="module-dv_flow.libfusesoc.edalize_sim">
+<span id="edalize-sim"></span><h2>edalize_sim<a class="headerlink" href="#module-dv_flow.libfusesoc.edalize_sim" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimConfigureParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">*,</span> <span class="pre">core_name:</span> <span class="pre">str,</span> <span class="pre">files:</span> <span class="pre">~typing.List[~typing.Dict],</span> <span class="pre">include_dirs:</span> <span class="pre">~typing.List[str]</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;,</span> <span class="pre">toplevel:</span> <span class="pre">str,</span> <span class="pre">tool:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'icarus',</span> <span class="pre">parameters:</span> <span class="pre">~typing.Dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;,</span> <span class="pre">plusargs:</span> <span class="pre">~typing.Dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;,</span> <span class="pre">tool_options:</span> <span class="pre">~typing.Dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimConfigureParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Parameters for SimConfigure task.</p>
+<p>Configures a simulation using Edalize.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name">
+<span class="sig-name descname"><span class="pre">core_name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files">
+<span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs">
+<span class="sig-name descname"><span class="pre">include_dirs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel">
+<span class="sig-name descname"><span class="pre">toplevel</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool">
+<span class="sig-name descname"><span class="pre">tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs">
+<span class="sig-name descname"><span class="pre">plusargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options">
+<span class="sig-name descname"><span class="pre">tool_options</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureOutput">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimConfigureOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">configured</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimConfigureOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Output from SimConfigure task.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root">
+<span class="sig-name descname"><span class="pre">work_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool">
+<span class="sig-name descname"><span class="pre">tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured">
+<span class="sig-name descname"><span class="pre">configured</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimBuildParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimBuildParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Parameters for SimBuild task.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root">
+<span class="sig-name descname"><span class="pre">work_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool">
+<span class="sig-name descname"><span class="pre">tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildOutput">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimBuildOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_success</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">executable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimBuildOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Output from SimBuild task.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root">
+<span class="sig-name descname"><span class="pre">work_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success">
+<span class="sig-name descname"><span class="pre">build_success</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable">
+<span class="sig-name descname"><span class="pre">executable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunParams">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimRunParams</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tool:</span> <span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runtime_plusargs:</span> <span class="pre">~typing.Dict</span> <span class="pre">=</span> <span class="pre">&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimRunParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Parameters for SimRun task.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root">
+<span class="sig-name descname"><span class="pre">work_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunParams.tool">
+<span class="sig-name descname"><span class="pre">tool</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.tool" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs">
+<span class="sig-name descname"><span class="pre">runtime_plusargs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunOutput">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimRunOutput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_root</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_success</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimRunOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModel</span></code></p>
+<p>Output from SimRun task.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root">
+<span class="sig-name descname"><span class="pre">work_root</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success">
+<span class="sig-name descname"><span class="pre">run_success</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file">
+<span class="sig-name descname"><span class="pre">log_file</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config">
+<span class="sig-name descname"><span class="pre">model_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">ConfigDict</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config" title="Link to this definition"></a></dt>
+<dd><p>Configuration for the model, should be a dictionary conforming to [<cite>ConfigDict</cite>][pydantic.config.ConfigDict].</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimConfigure">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimConfigure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TaskDataInput</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimConfigureParams" title="dv_flow.libfusesoc.edalize_sim.SimConfigureParams"><span class="pre">SimConfigureParams</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TaskDataResult</span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimConfigure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimConfigure" title="Link to this definition"></a></dt>
+<dd><p>Configure a simulation using Edalize.</p>
+<p>Creates EDAM structure and configures the Edalize backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runner</strong> – Task runner context</p></li>
+<li><p><strong>input</strong> – Task input with SimConfigureParams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>TaskDataResult with SimConfigureOutput</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimBuild">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimBuild</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TaskDataInput</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimBuildParams" title="dv_flow.libfusesoc.edalize_sim.SimBuildParams"><span class="pre">SimBuildParams</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TaskDataResult</span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimBuild"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimBuild" title="Link to this definition"></a></dt>
+<dd><p>Build simulation executable.</p>
+<p>Compiles and elaborates the design using the configured Edalize backend.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runner</strong> – Task runner context</p></li>
+<li><p><strong>input</strong> – Task input with SimBuildParams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>TaskDataResult with SimBuildOutput</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dv_flow.libfusesoc.edalize_sim.SimRun">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dv_flow.libfusesoc.edalize_sim.</span></span><span class="sig-name descname"><span class="pre">SimRun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">TaskDataInput</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dv_flow.libfusesoc.edalize_sim.SimRunParams" title="dv_flow.libfusesoc.edalize_sim.SimRunParams"><span class="pre">SimRunParams</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">TaskDataResult</span></span></span><a class="reference internal" href="_modules/dv_flow/libfusesoc/edalize_sim.html#SimRun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dv_flow.libfusesoc.edalize_sim.SimRun" title="Link to this definition"></a></dt>
+<dd><p>Run simulation.</p>
+<p>Executes the built simulation model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>runner</strong> – Task runner context</p></li>
+<li><p><strong>input</strong> – Task input with SimRunParams</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>TaskDataResult with SimRunOutput</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Simulation tasks for running HDL simulations through Edalize.</p>
+<section id="simconfigure-task">
+<h3>SimConfigure Task<a class="headerlink" href="#simconfigure-task" title="Link to this heading"></a></h3>
+<p>Configures a simulation environment.</p>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimConfigureParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">core_name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Dict</span><span class="p">]</span>
+    <span class="n">include_dirs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">toplevel</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">tool</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;icarus&quot;</span>
+    <span class="n">parameters</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">plusargs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tool_options</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p><strong>Outputs:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimConfigureOutput</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">work_root</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">tool</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">configured</span><span class="p">:</span> <span class="nb">bool</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_sim</span> <span class="kn">import</span> <span class="n">SimConfigure</span><span class="p">,</span> <span class="n">SimConfigureParams</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+    <span class="n">core_name</span><span class="o">=</span><span class="s2">&quot;uart&quot;</span><span class="p">,</span>
+    <span class="n">files</span><span class="o">=</span><span class="n">file_list</span><span class="p">,</span>
+    <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;uart_tb&quot;</span><span class="p">,</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span><span class="p">,</span>
+    <span class="n">parameters</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;BAUD_RATE&#39;</span><span class="p">:</span> <span class="mi">115200</span><span class="p">}</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="simbuild-task">
+<h3>SimBuild Task<a class="headerlink" href="#simbuild-task" title="Link to this heading"></a></h3>
+<p>Builds the simulation executable.</p>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimBuildParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">work_root</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">tool</span><span class="p">:</span> <span class="nb">str</span>
+</pre></div>
+</div>
+<p><strong>Outputs:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimBuildOutput</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">work_root</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">build_success</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">executable</span><span class="p">:</span> <span class="nb">str</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_sim</span> <span class="kn">import</span> <span class="n">SimBuild</span><span class="p">,</span> <span class="n">SimBuildParams</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="n">config_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="simrun-task">
+<h3>SimRun Task<a class="headerlink" href="#simrun-task" title="Link to this heading"></a></h3>
+<p>Executes the simulation.</p>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimRunParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">work_root</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">tool</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">runtime_plusargs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+</pre></div>
+</div>
+<p><strong>Outputs:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SimRunOutput</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">work_root</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">run_success</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">log_file</span><span class="p">:</span> <span class="nb">str</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_sim</span> <span class="kn">import</span> <span class="n">SimRun</span><span class="p">,</span> <span class="n">SimRunParams</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="n">build_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+    <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span><span class="p">,</span>
+    <span class="n">runtime_plusargs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;+verbose=1&#39;</span><span class="p">]</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="task-chaining">
+<h3>Task Chaining<a class="headerlink" href="#task-chaining" title="Link to this heading"></a></h3>
+<p>The simulation tasks are designed to be chained together:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Complete simulation flow</span>
+<span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">config_params</span><span class="p">)</span>
+
+<span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+    <span class="n">tool</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;tool&#39;</span><span class="p">]</span>
+<span class="p">))</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+    <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+    <span class="n">tool</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;tool&#39;</span><span class="p">]</span>
+<span class="p">))</span>
+
+<span class="k">if</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation passed!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log: </span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;log_file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="fusesoc_integration.html" class="btn btn-neutral float-left" title="FuseSoC Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="modules.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Ballance.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

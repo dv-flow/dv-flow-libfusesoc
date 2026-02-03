@@ -1,0 +1,1072 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usage Examples &mdash; dv-flow-libfusesoc 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DV Flow Task Reference" href="tasks.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            dv-flow-libfusesoc
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#required-knowledge">Required Knowledge</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-pypi">Install from PyPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-from-source">Install from Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#verify-installation">Verify Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#install-simulation-tools">Install Simulation Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start-tutorial">Quick Start Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-1-set-up-fusesoc-workspace">Step 1: Set Up FuseSoC Workspace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-2-create-a-simple-core">Step 2: Create a Simple Core</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#step-3-run-your-first-simulation">Step 3: Run Your First Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#common-issues">Common Issues</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#core-not-found">Core Not Found</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#build-failures">Build Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#tool-not-found">Tool Not Found</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#further-reading">Further Reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-examples">Basic Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-simple-core-resolution">Example 1: Simple Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-icarus-verilog-simulation">Example 2: Icarus Verilog Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-verilator-simulation">Example 3: Verilator Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-examples">Advanced Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-4-using-multiple-libraries">Example 4: Using Multiple Libraries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-5-parameterized-simulation">Example 5: Parameterized Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-6-error-handling">Example 6: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-examples">Integration Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-7-integration-with-dv-flow">Example 7: Integration with DV Flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-8-custom-task-integration">Example 8: Custom Task Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#real-world-examples">Real-World Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-9-uart-simulation">Example 9: UART Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-10-soc-subsystem-simulation">Example 10: SoC Subsystem Simulation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-and-best-practices">Tips and Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#performance-optimization">Performance Optimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-tips">Debugging Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workspace-management">Workspace Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#coreresolve-task">CoreResolve Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#corefetch-task">CoreFetch Task</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#complete-simulation-flow-example">Complete Simulation Flow Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#creating-custom-tasks">Creating Custom Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html#best-practices">Best Practices</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="quick_reference.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-commands">Common Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#core-resolution">Core Resolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulation-flow">Simulation Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#parameter-reference">Parameter Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#coreresolve-parameters">CoreResolve Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simconfigure-parameters">SimConfigure Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#supported-tools">Supported Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#simulators">Simulators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#tool-specific-options">Tool-Specific Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#icarus-verilog">Icarus Verilog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#verilator">Verilator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#modelsim-questa">ModelSim/Questa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#vcs">VCS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#common-patterns">Common Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-multiple-test-cases">Pattern: Multiple Test Cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-parameterized-configurations">Pattern: Parameterized Configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#pattern-error-handling">Pattern: Error Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#file-type-mappings">File Type Mappings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-to-dv-flow">FuseSoC to DV Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#environment-variables">Environment Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#fusesoc-variables">FuseSoC Variables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#common-errors">Common Errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#debug-commands">Debug Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#performance-tips">Performance Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quick_reference.html#additional-resources">Additional Resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quick_reference.html#external-links">External Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.__init__"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_manager"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_manager()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.add_library"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.add_library()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_core"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_core()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_core_files"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_core_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.get_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.get_dependencies()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_manager.FuseSoCManager.resolve_dependencies"><code class="docutils literal notranslate"><span class="pre">FuseSoCManager.resolve_dependencies()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#key-features">Key Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter"><code class="docutils literal notranslate"><span class="pre">FilesetConverter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.FILE_TYPE_MAP"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.FILE_TYPE_MAP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.__init__"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.convert_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.convert_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.extract_include_dirs"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.extract_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.filter_by_type"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.filter_by_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_fileset.FilesetConverter.get_source_files"><code class="docutils literal notranslate"><span class="pre">FilesetConverter.get_source_files()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#conversion-features">Conversion Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#file-type-mapping">File Type Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.libraries"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.libraries</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.workspace"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.workspace</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveParams.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.core_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.core_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files_root"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.files"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.dependencies"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.parameters"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.include_dirs"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveOutput.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.target"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.target</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.tool"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.core_name"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.last_resolution"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.last_resolution</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolveMemento.model_config"><code class="docutils literal notranslate"><span class="pre">CoreResolveMemento.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve"><code class="docutils literal notranslate"><span class="pre">CoreResolve()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#task-parameters">Task Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#task-outputs">Task Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder"><code class="docutils literal notranslate"><span class="pre">EdamBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.__init__"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_files"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_toplevel"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_toplevel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_parameters"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_parameters()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_plusargs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_plusargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_tool_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_tool_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.set_flow_options"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.set_flow_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.add_include_dirs"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.add_include_dirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.EdamBuilder.build"><code class="docutils literal notranslate"><span class="pre">EdamBuilder.build()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edam_builder.build_edam_from_core"><code class="docutils literal notranslate"><span class="pre">build_edam_from_core()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#edam-structure">EDAM Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#builder-pattern">Builder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#convenience-functions">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.__init__"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.configure"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.configure()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.build"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.build()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.run"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.run()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_tool"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_work_root"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_work_root()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.get_log_files"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.get_log_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.EdalizeBackend.cleanup"><code class="docutils literal notranslate"><span class="pre">EdalizeBackend.cleanup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_sim_backend"><code class="docutils literal notranslate"><span class="pre">create_sim_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_backend.create_fpga_backend"><code class="docutils literal notranslate"><span class="pre">create_fpga_backend()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#backend-lifecycle">Backend Lifecycle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#error-handling">Error Handling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#id1">Convenience Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.core_name"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.core_name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.files"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.files</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.include_dirs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.include_dirs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.toplevel"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.toplevel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.parameters"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.plusargs"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.tool_options"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.tool_options</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.tool"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.configured"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.configured</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigureOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimConfigureOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams"><code class="docutils literal notranslate"><span class="pre">SimBuildParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.tool"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.build_success"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.build_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.executable"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.executable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuildOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimBuildOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams"><code class="docutils literal notranslate"><span class="pre">SimRunParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunParams.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.tool"><code class="docutils literal notranslate"><span class="pre">SimRunParams.tool</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.runtime_plusargs"><code class="docutils literal notranslate"><span class="pre">SimRunParams.runtime_plusargs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunParams.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunParams.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput"><code class="docutils literal notranslate"><span class="pre">SimRunOutput</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.work_root"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.work_root</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.run_success"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.run_success</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.log_file"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.log_file</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRunOutput.model_config"><code class="docutils literal notranslate"><span class="pre">SimRunOutput.model_config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimConfigure"><code class="docutils literal notranslate"><span class="pre">SimConfigure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimBuild"><code class="docutils literal notranslate"><span class="pre">SimBuild()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#dv_flow.libfusesoc.edalize_sim.SimRun"><code class="docutils literal notranslate"><span class="pre">SimRun()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simconfigure-task">SimConfigure Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simbuild-task">SimBuild Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#simrun-task">SimRun Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html#task-chaining">Task Chaining</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modules.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="fusesoc_integration.html">FuseSoC Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_manager">fusesoc_manager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_fileset">fusesoc_fileset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fusesoc_integration.html#module-dv_flow.libfusesoc.fusesoc_core_resolve">fusesoc_core_resolve</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="edalize_integration.html">Edalize Integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edam_builder">edam_builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_backend">edalize_backend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="edalize_integration.html#module-dv_flow.libfusesoc.edalize_sim">edalize_sim</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tasks.html">DV Flow Task Reference</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-overview">Task Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-package">fusesoc Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-sim-package">fusesoc.edalize.sim Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-fpga-package">fusesoc.edalize.fpga Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#fusesoc-edalize-lint-package">fusesoc.edalize.lint Package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tasks.html#task-development-guide">Task Development Guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-1-2026-02-03">Version 0.0.1 (2026-02-03)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="changelog.html#initial-release">Initial Release</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#implementation-details">Implementation Details</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#known-limitations">Known Limitations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#breaking-changes">Breaking Changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#migration-guide">Migration Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#future-plans">Future Plans</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#contributors">Contributors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#acknowledgments">Acknowledgments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="changelog.html#license">License</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html#version-0-0-0-development">Version 0.0.0 (Development)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dv-flow-libfusesoc</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Usage Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/usage_examples.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usage-examples">
+<h1>Usage Examples<a class="headerlink" href="#usage-examples" title="Link to this heading"></a></h1>
+<p>This page provides practical examples of using dv-flow-libfusesoc.</p>
+<section id="basic-examples">
+<h2>Basic Examples<a class="headerlink" href="#basic-examples" title="Link to this heading"></a></h2>
+<section id="example-1-simple-core-resolution">
+<h3>Example 1: Simple Core Resolution<a class="headerlink" href="#example-1-simple-core-resolution" title="Link to this heading"></a></h3>
+<p>Resolve a FuseSoC core and inspect its contents:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.fusesoc_core_resolve</span> <span class="kn">import</span> <span class="n">CoreResolve</span><span class="p">,</span> <span class="n">CoreResolveParams</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">resolve_example</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>  <span class="c1"># Provided by DV Flow in real use</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;vendor:lib:ip_name:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/workspace&quot;</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Inspect results</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Core name: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Root: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_root&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Files (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">file</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">file</span><span class="p">[</span><span class="s1">&#39;file_type&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Include dirs (</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;include_dirs&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">):&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">inc</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;include_dirs&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">inc</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Parameters:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;parameters&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">resolve_example</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="example-2-icarus-verilog-simulation">
+<h3>Example 2: Icarus Verilog Simulation<a class="headerlink" href="#example-2-icarus-verilog-simulation" title="Link to this heading"></a></h3>
+<p>Complete simulation flow with Icarus Verilog:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.fusesoc_core_resolve</span> <span class="kn">import</span> <span class="n">CoreResolve</span><span class="p">,</span> <span class="n">CoreResolveParams</span>
+<span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.edalize_sim</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">SimConfigure</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">,</span>
+    <span class="n">SimBuild</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">,</span>
+    <span class="n">SimRun</span><span class="p">,</span> <span class="n">SimRunParams</span>
+<span class="p">)</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">icarus_sim</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+    <span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;/path/to/workspace&quot;</span>
+
+    <span class="c1"># Resolve</span>
+    <span class="n">core</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;myvendor:mylib:my_ip:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="n">workspace</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Configure for Icarus</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+        <span class="n">core_name</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">],</span>
+        <span class="n">files</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+        <span class="n">include_dirs</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;include_dirs&#39;</span><span class="p">],</span>
+        <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;my_ip_tb&quot;</span><span class="p">,</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span><span class="p">,</span>
+        <span class="n">plusargs</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;+dump_waves&quot;</span><span class="p">],</span>
+        <span class="n">tool_options</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;icarus&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;iverilog_options&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;-g2009&#39;</span><span class="p">,</span> <span class="s1">&#39;-Wall&#39;</span><span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Build</span>
+    <span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+        <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+    <span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;build_success&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed!&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Run</span>
+    <span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+        <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+    <span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation </span><span class="si">{</span><span class="s1">&#39;PASSED&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;FAILED&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">icarus_sim</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="example-3-verilator-simulation">
+<h3>Example 3: Verilator Simulation<a class="headerlink" href="#example-3-verilator-simulation" title="Link to this heading"></a></h3>
+<p>Using Verilator for high-performance simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">verilator_sim</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+
+    <span class="c1"># Resolve core</span>
+    <span class="n">core</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;myvendor:mylib:my_ip:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/workspace&quot;</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Configure for Verilator</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+        <span class="n">core_name</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">],</span>
+        <span class="n">files</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+        <span class="n">include_dirs</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;include_dirs&#39;</span><span class="p">],</span>
+        <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;my_ip_tb&quot;</span><span class="p">,</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;DATA_WIDTH&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+            <span class="s1">&#39;DEPTH&#39;</span><span class="p">:</span> <span class="mi">1024</span>
+        <span class="p">},</span>
+        <span class="n">tool_options</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;verilator&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;verilator_options&#39;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">&#39;--trace&#39;</span><span class="p">,</span>        <span class="c1"># Enable waveform tracing</span>
+                    <span class="s1">&#39;--trace-depth 2&#39;</span><span class="p">,</span> <span class="c1"># Trace depth</span>
+                    <span class="s1">&#39;-Wall&#39;</span><span class="p">,</span>          <span class="c1"># All warnings</span>
+                    <span class="s1">&#39;-O3&#39;</span>             <span class="c1"># Optimize</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Build with Verilator</span>
+    <span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+        <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Run</span>
+    <span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+        <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span><span class="p">,</span>
+        <span class="n">runtime_plusargs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;+trace&#39;</span><span class="p">]</span>
+    <span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="advanced-examples">
+<h2>Advanced Examples<a class="headerlink" href="#advanced-examples" title="Link to this heading"></a></h2>
+<section id="example-4-using-multiple-libraries">
+<h3>Example 4: Using Multiple Libraries<a class="headerlink" href="#example-4-using-multiple-libraries" title="Link to this heading"></a></h3>
+<p>Add custom core libraries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">multi_library_example</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;myvendor:mylib:soc:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/workspace&quot;</span><span class="p">,</span>
+        <span class="n">libraries</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;custom_ips&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/custom/cores&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;vendor_ips&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/vendor/cores&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;open_ips&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/open/cores&#39;</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resolved core with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;dependencies&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2"> dependencies&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;dependencies&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  - </span><span class="si">{</span><span class="n">dep</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-5-parameterized-simulation">
+<h3>Example 5: Parameterized Simulation<a class="headerlink" href="#example-5-parameterized-simulation" title="Link to this heading"></a></h3>
+<p>Run multiple simulations with different parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">parameterized_sim</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+
+    <span class="c1"># Resolve once</span>
+    <span class="n">core</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;myvendor:mylib:fifo:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/workspace&quot;</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Test different configurations</span>
+    <span class="n">configs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;DEPTH&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;WIDTH&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;DEPTH&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;WIDTH&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;DEPTH&#39;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="s1">&#39;WIDTH&#39;</span><span class="p">:</span> <span class="mi">32</span><span class="p">},</span>
+    <span class="p">]</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">configs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Testing with </span><span class="si">{</span><span class="n">params</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Configure</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+            <span class="n">core_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;fifo_</span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;DEPTH&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">x</span><span class="si">{</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;WIDTH&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">files</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+            <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;fifo_tb&quot;</span><span class="p">,</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span><span class="p">,</span>
+            <span class="n">parameters</span><span class="o">=</span><span class="n">params</span>
+        <span class="p">))</span>
+
+        <span class="c1"># Build</span>
+        <span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+        <span class="p">))</span>
+
+        <span class="c1"># Run</span>
+        <span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+        <span class="p">))</span>
+
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;params&#39;</span><span class="p">:</span> <span class="n">params</span><span class="p">,</span>
+            <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]</span>
+        <span class="p">})</span>
+
+    <span class="c1"># Summary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Results ===&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;✓&quot;</span> <span class="k">if</span> <span class="n">r</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;✗&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-6-error-handling">
+<h3>Example 6: Error Handling<a class="headerlink" href="#example-6-error-handling" title="Link to this heading"></a></h3>
+<p>Proper error handling and diagnostics:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">robust_sim</span><span class="p">():</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Resolve</span>
+        <span class="n">core</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+            <span class="n">core</span><span class="o">=</span><span class="s2">&quot;myvendor:mylib:my_ip:1.0&quot;</span><span class="p">,</span>
+            <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+            <span class="n">workspace</span><span class="o">=</span><span class="s2">&quot;/path/to/workspace&quot;</span>
+        <span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Core resolution failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Configure</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+            <span class="n">core_name</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">],</span>
+            <span class="n">files</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+            <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;my_ip_tb&quot;</span><span class="p">,</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+        <span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;configured&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Configuration failed!&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Configuration error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Build</span>
+        <span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+        <span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;build_success&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed! Check logs in:&quot;</span><span class="p">,</span> <span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">])</span>
+            <span class="c1"># Could read and print build logs here</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Build error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Run</span>
+        <span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;icarus&quot;</span>
+        <span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;✅ Simulation PASSED&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;❌ Simulation FAILED&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log: </span><span class="si">{</span><span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;log_file&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Runtime error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="integration-examples">
+<h2>Integration Examples<a class="headerlink" href="#integration-examples" title="Link to this heading"></a></h2>
+<section id="example-7-integration-with-dv-flow">
+<h3>Example 7: Integration with DV Flow<a class="headerlink" href="#example-7-integration-with-dv-flow" title="Link to this heading"></a></h3>
+<p>Using tasks in a DV Flow workflow file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># my_flow.dv</span>
+<span class="nt">package</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_project</span>
+
+<span class="w">  </span><span class="nt">imports</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fusesoc</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fusesoc.edalize.sim</span>
+
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">resolve_uart</span>
+<span class="w">    </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fusesoc.CoreResolve</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">core</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;myvendor:uart:uart16550:1.0&quot;</span>
+<span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;sim&quot;</span>
+<span class="w">      </span><span class="nt">workspace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${workspace_dir}&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">config_sim</span>
+<span class="w">    </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fusesoc.edalize.sim.SimConfigure</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">core_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${resolve_uart.core_name}&quot;</span>
+<span class="w">      </span><span class="nt">files</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${resolve_uart.files}&quot;</span>
+<span class="w">      </span><span class="nt">toplevel</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;uart_tb&quot;</span>
+<span class="w">      </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;icarus&quot;</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">BAUD_RATE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">115200</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_sim</span>
+<span class="w">    </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fusesoc.edalize.sim.SimBuild</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">work_root</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${config_sim.work_root}&quot;</span>
+<span class="w">      </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${config_sim.tool}&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">run_sim</span>
+<span class="w">    </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fusesoc.edalize.sim.SimRun</span>
+<span class="w">    </span><span class="nt">params</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">work_root</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${build_sim.work_root}&quot;</span>
+<span class="w">      </span><span class="nt">tool</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${build_sim.tool}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="example-8-custom-task-integration">
+<h3>Example 8: Custom Task Integration<a class="headerlink" href="#example-8-custom-task-integration" title="Link to this heading"></a></h3>
+<p>Creating a custom task that uses CoreResolve:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">dv_flow.libfusesoc.fusesoc_core_resolve</span> <span class="kn">import</span> <span class="n">CoreResolve</span><span class="p">,</span> <span class="n">CoreResolveParams</span>
+
+<span class="k">class</span> <span class="nc">CustomAnalysisParams</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">core</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">workspace</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">target</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;sim&quot;</span>
+
+<span class="k">class</span> <span class="nc">CustomAnalysisOutput</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">file_count</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">verilog_files</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">systemverilog_files</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">total_lines</span><span class="p">:</span> <span class="nb">int</span>
+
+<span class="k">class</span> <span class="nc">CustomAnalysisTask</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Analyze a FuseSoC core&#39;s file statistics&quot;&quot;&quot;</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">runner</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">CustomAnalysisParams</span><span class="p">):</span>
+        <span class="c1"># First resolve the core</span>
+        <span class="n">core_result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+            <span class="n">core</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">core</span><span class="p">,</span>
+            <span class="n">target</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">target</span><span class="p">,</span>
+            <span class="n">workspace</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">workspace</span>
+        <span class="p">))</span>
+
+        <span class="c1"># Analyze the files</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">core_result</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">]</span>
+        <span class="n">verilog_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;file_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;verilogSource&#39;</span><span class="p">)</span>
+        <span class="n">sv_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span> <span class="k">if</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;file_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;systemVerilogSource&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Count lines (simplified)</span>
+        <span class="n">total_lines</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">total_lines</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">)</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">CustomAnalysisOutput</span><span class="p">(</span>
+            <span class="n">file_count</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">),</span>
+            <span class="n">verilog_files</span><span class="o">=</span><span class="n">verilog_count</span><span class="p">,</span>
+            <span class="n">systemverilog_files</span><span class="o">=</span><span class="n">sv_count</span><span class="p">,</span>
+            <span class="n">total_lines</span><span class="o">=</span><span class="n">total_lines</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="real-world-examples">
+<h2>Real-World Examples<a class="headerlink" href="#real-world-examples" title="Link to this heading"></a></h2>
+<section id="example-9-uart-simulation">
+<h3>Example 9: UART Simulation<a class="headerlink" href="#example-9-uart-simulation" title="Link to this heading"></a></h3>
+<p>Complete UART core simulation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">uart_example</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a UART core with multiple test patterns&quot;&quot;&quot;</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+    <span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;/path/to/workspace&quot;</span>
+
+    <span class="c1"># Resolve UART core</span>
+    <span class="n">core</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;opencores:uart:uart16550:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="n">workspace</span>
+    <span class="p">))</span>
+
+    <span class="n">test_cases</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;basic&#39;</span><span class="p">,</span> <span class="s1">&#39;baud&#39;</span><span class="p">:</span> <span class="mi">9600</span><span class="p">,</span> <span class="s1">&#39;data_bits&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;fast&#39;</span><span class="p">,</span> <span class="s1">&#39;baud&#39;</span><span class="p">:</span> <span class="mi">115200</span><span class="p">,</span> <span class="s1">&#39;data_bits&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;wide&#39;</span><span class="p">,</span> <span class="s1">&#39;baud&#39;</span><span class="p">:</span> <span class="mi">115200</span><span class="p">,</span> <span class="s1">&#39;data_bits&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">},</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">test_cases</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running test: </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+            <span class="n">core_name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;uart_</span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">files</span><span class="o">=</span><span class="n">core</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+            <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;uart_tb&quot;</span><span class="p">,</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span><span class="p">,</span>
+            <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+                <span class="s1">&#39;BAUD_RATE&#39;</span><span class="p">:</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;baud&#39;</span><span class="p">],</span>
+                <span class="s1">&#39;DATA_WIDTH&#39;</span><span class="p">:</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;data_bits&#39;</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="n">plusargs</span><span class="o">=</span><span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;+testname=</span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;+baud_rate=</span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;baud&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">]</span>
+        <span class="p">))</span>
+
+        <span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+        <span class="p">))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;build_success&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✗ Build failed for </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+        <span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✓ Test </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> PASSED&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✗ Test </span><span class="si">{</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> FAILED&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-10-soc-subsystem-simulation">
+<h3>Example 10: SoC Subsystem Simulation<a class="headerlink" href="#example-10-soc-subsystem-simulation" title="Link to this heading"></a></h3>
+<p>Simulating a complete SoC subsystem:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">async</span> <span class="k">def</span> <span class="nf">soc_subsystem_example</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate an SoC with multiple IP cores&quot;&quot;&quot;</span>
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">MockRunner</span><span class="p">()</span>
+    <span class="n">workspace</span> <span class="o">=</span> <span class="s2">&quot;/path/to/workspace&quot;</span>
+
+    <span class="c1"># Resolve the top-level SoC core (includes dependencies)</span>
+    <span class="n">soc</span> <span class="o">=</span> <span class="k">await</span> <span class="n">CoreResolve</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">CoreResolveParams</span><span class="p">(</span>
+        <span class="n">core</span><span class="o">=</span><span class="s2">&quot;mycompany:soc:ahb_subsystem:1.0&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="s2">&quot;sim&quot;</span><span class="p">,</span>
+        <span class="n">workspace</span><span class="o">=</span><span class="n">workspace</span><span class="p">,</span>
+        <span class="n">libraries</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;vendor_ips&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/vendor/ips&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;internal_ips&#39;</span><span class="p">:</span> <span class="s1">&#39;/path/to/internal/ips&#39;</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SoC subsystem resolved:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Main core: </span><span class="si">{</span><span class="n">soc</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Dependencies: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">soc</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;dependencies&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dep</span> <span class="ow">in</span> <span class="n">soc</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;dependencies&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    - </span><span class="si">{</span><span class="n">dep</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Configure simulation</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+        <span class="n">core_name</span><span class="o">=</span><span class="n">soc</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;core_name&#39;</span><span class="p">],</span>
+        <span class="n">files</span><span class="o">=</span><span class="n">soc</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">],</span>
+        <span class="n">include_dirs</span><span class="o">=</span><span class="n">soc</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;include_dirs&#39;</span><span class="p">],</span>
+        <span class="n">toplevel</span><span class="o">=</span><span class="s2">&quot;ahb_subsystem_tb&quot;</span><span class="p">,</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span><span class="p">,</span>
+        <span class="n">parameters</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;CLK_FREQ&#39;</span><span class="p">:</span> <span class="mi">100_000_000</span><span class="p">,</span>
+            <span class="s1">&#39;NUM_MASTERS&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s1">&#39;NUM_SLAVES&#39;</span><span class="p">:</span> <span class="mi">8</span>
+        <span class="p">},</span>
+        <span class="n">tool_options</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;verilator&#39;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s1">&#39;verilator_options&#39;</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">&#39;--trace&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;--trace-structs&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;-O3&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;-Wall&#39;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">))</span>
+
+    <span class="c1"># Build (may take a while for large designs)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Building (this may take a few minutes)...&quot;</span><span class="p">)</span>
+    <span class="n">build</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimBuild</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimBuildParams</span><span class="p">(</span>
+        <span class="n">work_root</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+        <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span>
+    <span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;build_success&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Build failed!&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># Run regression tests</span>
+    <span class="n">test_vectors</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;basic_read_write&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;burst_transfers&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;error_conditions&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;multi_master&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">test_vectors</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Running test: </span><span class="si">{</span><span class="n">test</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">run</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimRun</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimRunParams</span><span class="p">(</span>
+            <span class="n">work_root</span><span class="o">=</span><span class="n">build</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;work_root&#39;</span><span class="p">],</span>
+            <span class="n">tool</span><span class="o">=</span><span class="s2">&quot;verilator&quot;</span><span class="p">,</span>
+            <span class="n">runtime_plusargs</span><span class="o">=</span><span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;+test=</span><span class="si">{</span><span class="n">test</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s1">&#39;+verbose=1&#39;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;+seed=</span><span class="si">{</span><span class="nb">hash</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">]</span>
+        <span class="p">))</span>
+
+        <span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;✓ PASS&quot;</span> <span class="k">if</span> <span class="n">run</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="s1">&#39;run_success&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="s2">&quot;✗ FAIL&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="tips-and-best-practices">
+<h2>Tips and Best Practices<a class="headerlink" href="#tips-and-best-practices" title="Link to this heading"></a></h2>
+<section id="performance-optimization">
+<h3>Performance Optimization<a class="headerlink" href="#performance-optimization" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Cache core resolution</strong>: Resolve once, reuse for multiple simulations</p></li>
+<li><p><strong>Use Verilator for speed</strong>: Much faster than Icarus for large designs</p></li>
+<li><p><strong>Incremental builds</strong>: Edalize supports incremental compilation</p></li>
+<li><p><strong>Parallel testing</strong>: Run multiple test configurations in parallel</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: Parallel test execution</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">run_parallel_tests</span><span class="p">(</span><span class="n">test_configs</span><span class="p">):</span>
+    <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">run_single_test</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">test_configs</span><span class="p">]</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">tasks</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</section>
+<section id="debugging-tips">
+<h3>Debugging Tips<a class="headerlink" href="#debugging-tips" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Enable waveforms</strong>: Use <code class="docutils literal notranslate"><span class="pre">+dump_waves</span></code> plusarg or tool-specific options</p></li>
+<li><p><strong>Increase verbosity</strong>: Add <code class="docutils literal notranslate"><span class="pre">+verbose</span></code> or tool debug flags</p></li>
+<li><p><strong>Check logs</strong>: Always examine the log file on failures</p></li>
+<li><p><strong>Verify file paths</strong>: Ensure all files in the core are accessible</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Debug configuration</span>
+<span class="n">config</span> <span class="o">=</span> <span class="k">await</span> <span class="n">SimConfigure</span><span class="p">(</span><span class="n">runner</span><span class="p">,</span> <span class="n">SimConfigureParams</span><span class="p">(</span>
+    <span class="c1"># ... other params ...</span>
+    <span class="n">plusargs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;+dump_waves&#39;</span><span class="p">,</span> <span class="s1">&#39;+verbose=2&#39;</span><span class="p">],</span>
+    <span class="n">tool_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;icarus&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;iverilog_options&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;-g2009&#39;</span><span class="p">,</span> <span class="s1">&#39;-Wall&#39;</span><span class="p">,</span> <span class="s1">&#39;-Winfloop&#39;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="workspace-management">
+<h3>Workspace Management<a class="headerlink" href="#workspace-management" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Use separate workspaces</strong>: Different projects in different directories</p></li>
+<li><p><strong>Clean periodically</strong>: Remove old build artifacts</p></li>
+<li><p><strong>Version control .core files</strong>: Track your core definitions</p></li>
+<li><p><strong>Document libraries</strong>: Keep a manifest of external libraries</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Workspace organization example</span>
+<span class="n">workspace_layout</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">/project_root/</span>
+<span class="s2">  fusesoc_workspace/</span>
+<span class="s2">    libraries/</span>
+<span class="s2">      vendor_a/</span>
+<span class="s2">      vendor_b/</span>
+<span class="s2">      internal/</span>
+<span class="s2">    cores/</span>
+<span class="s2">      my_core.core</span>
+<span class="s2">    work/</span>
+<span class="s2">      (build artifacts - in .gitignore)</span>
+<span class="s2">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="getting_started.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tasks.html" class="btn btn-neutral float-right" title="DV Flow Task Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Ballance.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
