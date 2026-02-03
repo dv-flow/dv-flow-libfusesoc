@@ -1,0 +1,25 @@
+CAPI=2:
+
+name: test:cores:simple:1.0
+description: Simple test core for libfusesoc testing
+
+filesets:
+  rtl:
+    files:
+      - simple.v : {file_type: verilogSource}
+
+  tb:
+    files:
+      - simple_tb.v : {file_type: verilogSource}
+
+targets:
+  default:
+    filesets:
+      - rtl
+
+  sim:
+    default_tool: icarus
+    filesets:
+      - rtl
+      - tb
+    toplevel: simple_tb

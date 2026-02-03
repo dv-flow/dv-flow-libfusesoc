@@ -1,0 +1,53 @@
+#****************************************************************************
+#* flow.dv
+#*
+#* Copyright 2023-2025 Matthew Ballance and Contributors
+#*
+#* Licensed under the Apache License, Version 2.0 (the "License"); you may
+#* not use this file except in compliance with the License.
+#* You may obtain a copy of the License at:
+#*
+#*   http://www.apache.org/licenses/LICENSE-2.0
+#*
+#* Unless required by applicable law or agreed to in writing, software
+#* distributed under the License is distributed on an "AS IS" BASIS,
+#* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#* See the License for the specific language governing permissions and
+#* limitations under the License.
+#*
+#****************************************************************************
+package:
+  name: fusesoc
+  desc: FuseSoC core management and Edalize tool integration
+
+  tasks:
+  - export: CoreResolve
+    desc: Resolve FuseSoC core and retrieve file lists
+    pytask: dv_flow.libfusesoc.fusesoc_core_resolve.CoreResolve
+    doc: |
+      Resolves a FuseSoC core by name/VLNV and extracts file lists,
+      dependencies, and metadata. All operations are performed within
+      the configured workspace directory.
+      
+      Parameters:
+        - core: Core VLNV (vendor:library:name:version)
+        - target: Optional target configuration (e.g., 'sim', 'synth')
+        - tool: Optional tool name for tool-specific filesets
+        - libraries: Additional libraries to add {name: path}
+        - workspace: FuseSoC workspace directory
+      
+      Outputs:
+        - core_name: Resolved core name
+        - core_root: Core root directory
+        - files: Converted file list
+        - dependencies: Core dependencies
+        - parameters: Core parameters
+        - include_dirs: Include directories
+
+  - export: CoreFetch
+    desc: Fetch remote FuseSoC core dependencies
+    pytask: dv_flow.libfusesoc.fusesoc_core_fetch.CoreFetch
+    doc: |
+      Fetches remote FuseSoC cores and their dependencies into the
+      local workspace. Supports git repositories and other sources.
+      (Not yet implemented)

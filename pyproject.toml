@@ -1,0 +1,39 @@
+
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dv-flow-libfusesoc"
+version = "0.0.1"
+dependencies = [
+    "dv-flow-mgr",
+    "fusesoc>=2.0",
+    "edalize>=0.5",
+]
+authors = [
+    {name = "Matthew Ballance", email = "matt.ballance@gmail.com"},
+]
+description = "DV Flow extension for FuseSoC core management and Edalize tool integration"
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.8"
+
+[project.entry-points."dv_flow.mgr"]
+libfusesoc = "dv_flow.libfusesoc.__ext__"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"dv_flow.libfusesoc" = ["**/*.dv"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"

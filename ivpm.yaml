@@ -1,0 +1,30 @@
+
+package:
+  name: dv-flow-libfusesoc
+
+  dep-sets:
+  - name: default-dev
+    deps: 
+    - name: fusesoc 
+      url: https://github.com/olofk/fusesoc.git
+    - name: edalize
+      url: https://github.com/olofk/edalize.git
+    - name: dv-flow-mgr
+      url: https://github.com/dv-flow/dv-flow-mgr.git
+    - name: dv-flow-libhdlsim
+      url: https://github.com/dv-flow/dv-flow-libhdlsim.git
+    - name: pytest
+      src: pypi
+    - name: pydantic
+      src: pypi
+    - name: Sphinx
+      src: pypi
+    - name: sphinx_rtd_theme
+      src: pypi
+    - name: verilator
+      url: https://github.com/edapack/verilator-bin
+      prerelease: false
+      version: latest
+      cache: true
+      src: gh-rls
+
